@@ -65,7 +65,7 @@
                      </li>
                      <li class="nav-item active ">
                          <a class="nav-link" href="./registros.php">
-                             <i class="material-icons">list</i>
+                             <i class="material-icons">content_paste</i>
                              <p>Registros</p>
                          </a>
                      </li>

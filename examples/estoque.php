@@ -1,18 +1,4 @@
-<!--
-=========================================================
- Material Dashboard - v2.1.1
-=========================================================
-
- Product Page: https://www.creative-tim.com/product/material-dashboard
- Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/material-dashboard/blob/master/LICENSE.md)
-
- Coded by Creative Tim
-
-=========================================================
-
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
- <?php
+<?php
     session_start();
 
     require_once ("../assets/php/funcoes.php");
@@ -29,7 +15,7 @@
 ?>
 
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="pt-BR">
 
     <head>
         <meta charset="utf-8" />
@@ -78,7 +64,7 @@
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="./registros.php">
-                                <i class="material-icons">list</i>
+                                <i class="material-icons">content_paste</i>
                                 <p>Registros</p>
                             </a>
                         </li>
@@ -143,8 +129,8 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                                         <!-- <a class="dropdown-item" href="#">Profile</a>
-                   <a class="dropdown-item" href="#">Settings</a>
-                   <div class="dropdown-divider"></div> -->
+                                            <a class="dropdown-item" href="#">Settings</a>
+                                            <div class="dropdown-divider"></div> -->
                                         <a class="dropdown-item" href="#">Log out</a>
                                     </div>
                                 </li>
@@ -179,30 +165,6 @@
 
                                                 </thead>
                                                 <tbody id="listItensRuas">
-
-                                                    <!---------------------------------------------------------------------------------------------------------------------------------------------------->
-                                                    <!------------------------------------------------- Listagem de Itens em Ruas ------------------------------------------------------------------------>
-                                                    <!---------------------------------------------------------------------------------------------------------------------------------------------------->
-                                                    <!-- <tr>
-                                                     <td>1</td>
-                                                     <td>Parafuso X</td>
-                                                     <td>1</td>
-                                                     <td>3</td>
-                                                     <td>2</td>
-                                                     <td>3</td>
-                                                     <td class="td-actions text-center">
-                                                         <button type="button" rel="tooltip" class="btn btn-info">
-                                                            <i class="material-icons">person</i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#entradaModal">
-                                                            <i class="material-icons">add</i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#saidaModal">
-                                                            <i class="material-icons">remove</i>
-                                                        </button>
-                                                    </td>
-
-                                                 </tr> -->
                                                 </tbody>
                                             </table>
                                             <div class="copyright float-right">
@@ -245,6 +207,7 @@
                                             <table class="table">
                                                 <thead class=" text-default">
                                                     <th>ID</th>
+                                                    <th>COD</th>
                                                     <th>Nome</th>
                                                     <th>Armario</th>
                                                     <th>Andar</th>
@@ -253,73 +216,7 @@
                                                     <th class="text-center">Ações</th>
 
                                                 </thead>
-                                                <tbody>
-
-                                                    <?php
-
-                                                      $allData = $u -> returnItensArmarios();
-                                                      // var_dump($allData);
-                                                      foreach ($allData as $data) {
-                                                        ?>
-
-                                                        <tr>
-                                                            <td>
-                                                                <?= $data['id']?>
-                                                            </td>
-                                                            <td>
-                                                                <?= $data['nome']?>
-                                                            </td>
-                                                            <td>
-                                                                <?= $data['n_armario']?>
-                                                            </td>
-                                                            <td>
-                                                                <?= $data['n_andar']?>
-                                                            </td>
-                                                            <td>
-                                                                <?= $data['quantidade']?>
-                                                            </td>
-                                                            <td>
-                                                                <?= $data['observacao']?>
-                                                            </td>
-
-                                                            <td class='td-actions text-center'>
-
-                                                                <button type='button' rel='tooltip' class='btn btn-success' data-toggle='modal' data-target='#entradaModal'>
-                                                                    <i class='material-icons'>add</i>
-                                                                </button>
-                                                                <button type='button' rel='tooltip' class='btn btn-danger' data-toggle='modal' data-target='#saidaModal'>
-                                                                    <i class='material-icons'>remove</i>
-                                                                </button>
-                                                                <button type='button' rel='tooltip' class='btn btn-warning' data-toggle='modal' data-target=''>
-                                                                    <i class='material-icons'>edit</i>
-                                                                </button>
-                                                            </td>
-
-                                                        </tr>
-                                                        <?php
-                                                      }
-                                                    ?>
-
-                                                            <!-- <tr>
-                                                        <td>1</td>
-                                                        <td>Parafuso X</td>
-                                                        <td>1</td>
-                                                        <td>3</td>
-                                                        <td>2</td>
-                                                        <td>3</td>
-                                                        <td class="td-actions text-center">
-                                                            <button type="button" rel="tooltip" class="btn btn-info">
-                                                           <i class="material-icons">person</i>
-                                                       </button>
-                                                            <button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#entradaModal">
-                                                                <i class="material-icons">add</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" class="btn btn-danger" data-toggle="modal" data-target="#saidaModal">
-                                                                <i class="material-icons">remove</i>
-                                                            </button>
-                                                        </td>
-
-                                                    </tr> -->
+                                                <tbody id="listItensArmarios">
                                                 </tbody>
                                             </table>
                                             <div class="copyright float-right">
@@ -445,7 +342,7 @@
             </div>
         </div>
 
-        <!-- Modal - Entrada de Produtos - Ruas-->
+        <!-- Modal - Entrada de Produtos - Ruas -->
         <div class="modal fade in" id="entradaModal" tabindex="-1" role="dialog" aria-labelledby="entradaModal">
             <div class="modal-dialog  modal-lg" role="document">
                 <div class="modal-content">
@@ -493,7 +390,7 @@
         </div>
 
         <!-- Modal - Edição de Produtos - Ruas -->
-        <div class="modal fade in" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" enctype="multipart/form-data">
+        <div class="modal fade in" id="editModalRua" tabindex="-1" role="dialog" aria-labelledby="editModalRua" enctype="multipart/form-data">
             <div class="modal-dialog  modal-lg" role="document">
                 <div class="modal-content">
                     <div class="card card-signup card-plain">
@@ -504,7 +401,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form id="formAltIndexRua" class="form" method="POST" id="RegisterValidation" action="">
+                            <form id="formAltIndexRua" class="form" method="" action="">
 
                                 <div class="row has-danger">
                                     <!-- <div class="col-lg-6">
@@ -608,11 +505,226 @@
                 </div>
             </div>
         </div>
+        </body>
         <!---------------------------------------------------------------------------------------------------------------------------------------------------->
         <!------------------------------------------------- Modais das Ordens de Saida, Entrada e Edição ----------------------------------------------------->
         <!---------------------------------------------------------------- Ruas ------------------------------------------------------------------------------>
         <!---------------------------------------------------------------------------------------------------------------------------------------------------->
 
+
+
+
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------------------------------------------------- Modais das Ordens de Saida, Entrada e Edição ----------------------------------------------------->
+        <!--------------------------------------------------------------------- Armarios --------------------------------------------------------------------->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-- Modal - Ordem de Saída - Armarios -->
+        <div class="modal fade in" id="saidaModalArmarios" tabindex="-1" role="dialog" aria-labelledby="saidaModal">
+            <div class="modal-dialog  modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="card card-signup card-plain">
+                        <div class="modal-header">
+                            <h3 class="modal-title text-center" id="myModalLabel"> Controle de Saida </h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <i aria-hidden="true" class="material-icons">clear</i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form" method="" action="">
+
+                                <div class="row has-danger">
+                                    <div class="col">
+                                        <label for="inputOS">Ordem de Solicitação</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="col has-danger">
+                                        <label for="inputOP">Ordem de Permissão</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="row has-danger">
+                                    <div class="col">
+                                        <label for="inputCP">Cod Produto</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="col has-danger">
+                                        <label for="inputNM">Observação</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="row has-danger">
+                                    <div class="col">
+                                        <label for="inputDT">Data</label>
+                                        <input type="date" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="col has-danger">
+                                        <label for="inputQT">Quantidade</label>
+                                        <input type="number" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-success">Executar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal - Entrada de Produtos - Armarios -->
+        <div class="modal fade in" id="entradaModal" tabindex="-1" role="dialog" aria-labelledby="entradaModal">
+            <div class="modal-dialog  modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="card card-signup card-plain">
+                        <div class="modal-header">
+                            <h3 class="modal-title text-center" id="myModalLabel"> Controle de Entrada </h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <i aria-hidden="true" class="material-icons">clear</i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form" method="" action="">
+
+                                <div class="row has-danger">
+                                    <div class="col">
+                                        <label for="inputCP">Cod Produto</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="col has-danger">
+                                        <label for="inputNM">Observação</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="row has-danger">
+                                    <div class="col">
+                                        <label for="inputDT">Data</label>
+                                        <input type="date" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="col has-danger">
+                                        <label for="inputQT">Quantidade</label>
+                                        <input type="number" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-success">Executar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal - Edição de Produtos - Armarios -->
+        <div class="modal fade in" id="editModalArmarios" tabindex="-1" role="dialog" aria-labelledby="editModalArmarios" enctype="multipart/form-data">
+            <div class="modal-dialog  modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="card card-signup card-plain">
+                        <div class="modal-header">
+                            <h3 class="modal-title text-center" id=""> Editar Produto </h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <i aria-hidden="true" class="material-icons">clear</i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formAltIndexArmario" class="form" method="" action="">
+
+                                <div class="row has-danger">
+                                    <!-- <div class="col-lg-6">
+
+                                    <label for="inputState">State</label>
+                                    <select id="inputState" class="form-control">
+
+                                                    <option selected>...</option>
+                                                    <option selected disabled>Rua</option>
+                                                    <option>Armario</option>
+
+                                                </select>
+                                    <input type="text" class="form-control" placeholder="" value="Ruas" disabled>
+
+                                </div> -->
+                                    <div class="col">
+                                        <label for="inputID">ID</label>
+                                        <input type="" class="form-control" name="idPro" id="idPro" placeholder="" required="true" readonly>
+                                        <!-- readonly -->
+                                    </div>
+                                    <div class="col">
+                                        <label for="inputID">COD</label>
+                                        <input class="form-control" name="codPro" id="codPro" placeholder="" required="true" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="row has-danger">
+                                    <div class="col">
+                                        <label for="inputNM">Nome</label>
+                                        <input type="" class="form-control" name="editNome" id="editNome" placeholder="" required="true">
+                                    </div>
+                                    <div class="col has-danger">
+                                        <label for="inputQT">Quantidade</label>
+                                        <input type="" class="form-control" name="editQuantidade" id="editQuantidade" placeholder="" required="true" disabled>
+                                    </div>
+                                </div>
+                                <div class="row has-danger">
+                                    <div class="col">
+                                        <label class="label-control">Armario</label>
+                                        <select type="" class="form-control" name="editArmario" id="editArmario" required="true">
+
+                                            <option type="" value="1">1</option>
+                                            <option type="" value="2">2</option>
+                                            <option type="" value="3">3</option>
+                                            <option type="" value="4">4</option>
+                                            <option type="" value="5">5</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col has-danger">
+                                        <label for="inputAD">Andar</label>
+                                        <select type="" class="select form-control" name="editAndar" id="editAndar" required="true">
+
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row has-danger">
+                                    <div class="col">
+                                        <label for="inputOBS">Observação</label>
+                                        <input type="" class="form-control" name="editObservacao" id="editObservacao" placeholder="" required="true">
+                                    </div>
+                                </div>
+                                <div class="modal-footer justify-content-center">
+
+                                    <button type="submit" class="btn btn-success">Executar</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </body>
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!------------------------------------------------- Modais das Ordens de Saida, Entrada e Edição ----------------------------------------------------->
+        <!---------------------------------------------------------------- Armarios--------------------------------------------------------------------------->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------->
+        
+        <!-- Scripts ESTOQUE -->
+        <script src="../assets/js/estoque.js"></script>
         <!--   Core JS Files   -->
         <script src="../assets/js/core/jquery.min.js"></script>
         <script src="../assets/js/core/popper.min.js"></script>
@@ -657,204 +769,18 @@
         <!-- Material Dashboard DEMO methods, don't include it in your project! -->
         <script src="../assets/demo/demo.js"></script>
 
-        <!-- <script>
-
-          $('body').on("click", ".editModalRuas", function() {
-
-            console.log("$('#idPro')", $('#idPro'))
-            console.log("$('#codPro')", $('#codPro'))
-            console.log("$('#editNome')", $('#editNome'))
-            console.log("$('#editRua')", $('#editRua'))
-            console.log("$('#editLado')", $('#editLado'))
-            console.log("$('#editArmario')", $('#editArmario'))
-            console.log("$('#editAndar')", $('#editAndar'))
-            console.log("$('#editQuantidade')", $('#editQuantidade'))
-            console.log("$('#editObservacao')", $('#editObservacao'))
-
-            $('#idPro').val($(this).parents('tr').find('td').eq(0).text());
-            $('#codPro').val($(this).parents('tr').find('td').eq(1).text());
-            $('#editNome').val($(this).parents('tr').find('td').eq(2).text());
-
-            $('#editRua').val($(this).parents('tr').find('td').eq(3).text());            
-            $('#editLado').val($(this).parents('tr').find('td').eq(4).text());
-            $('#editArmario').val($(this).parents('tr').find('td').eq(5).text());
-            $('#editAndar').val($(this).parents('tr').find('td').eq(6).text());
-
-            $('#editQuantidade').val($(this).parents('tr').find('td').eq(7).text());
-            $('#editObservacao').val($(this).parents('tr').find('td').eq(8).text());
-
-          });
-
-        </script> -->
         <script>
             $(document).ready(function() {
                 carregarListaItensRuas()
-            });
-        </script>
-        <script>
-            function carregarListaItensRuas() {
-                $('#listItensRuas').empty(); //Limpando a tabela
-                $.ajax({
-                    type: 'post', //Definimos o método HTTP usado
-                    dataType: 'json', //Definimos o tipo de retorno
-                    url: '../assets/php/jsonListRuas.php', //Definindo o arquivo onde serão buscados os dados
-                    success: function(dados) {
-                        console.log(dados);
-                        for (var i = 0; dados.length > i; i++) {
-                            //Adicionando registros retornados na tabela
-                            $('#listItensRuas').append('<tr>' + '<td>' + dados[i].id + '</td>' +
-                                '<td>' + dados[i].id + dados[i].n_rua + dados[i].lado + dados[i].n_armario + dados[i].n_andar + '</td>' +
-                                '<td>' + dados[i].nome + '</td>' +
-                                '<td>' + dados[i].n_rua + '</td>' +
-                                '<td>' + dados[i].lado + '</td>' +
-                                '<td>' + dados[i].n_armario + '</td>' +
-                                '<td>' + dados[i].n_andar + '</td>' +
-                                '<td>' + dados[i].quantidade + '</td>' +
-                                '<td>' + dados[i].observacao + '</td>' +
+                carregarListaItensArmarios()
 
-                                '<td class="td-actions text-center">' +
+                povoaModalDeEdicaoRuas()
+                povoaModalDeEdicaoArmarios()
 
-                                '<button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#entradaModal">' +
-                                '<i class="material-icons">add</i>' +
-                                '</button>' +
-
-                                '<button type="button" rel="tooltip" class="btn btn-warning" data-toggle="modal" data-target="#saidaModal">' +
-                                '<i class="material-icons">remove</i>' +
-                                '</button>' +
-
-                                '<button type="button" rel="tooltip" class="btn btn-info" data-toggle="modal" data-target="#editModal" data-whateverid =' + dados[i].id + " " +
-                                'data-whatevercod =' + dados[i].id + dados[i].n_rua + dados[i].lado + dados[i].n_armario + dados[i].n_andar + " " +
-                                'data-whatevernome =' + dados[i].nome + " " +
-                                'data-whateverrua =' + dados[i].n_rua + " " +
-                                'data-whateverlado =' + dados[i].lado + " " +
-                                'data-whateverarmario =' + dados[i].n_armario + " " +
-                                'data-whateverandar =' + dados[i].n_andar + " " +
-                                'data-whateverquantidade =' + dados[i].quantidade + " " +
-                                'data-whateverobservacao =' + dados[i].observacao + ">" +
-                                '<i class="material-icons">edit</i>' +
-                                '</button>' +
-
-                                '<button type="button" rel="tooltip" class="btn btn-danger" onClick = "confirmDelIndexRua(' + dados[i].id + ')">' +
-                                '<i class="material-icons">delete</i>' +
-                                '</button>' +
-
-                                '</td>' +
-
-                                '</tr>');
-                        }
-                    }
-                });
-            }
-        </script>
-
-        <script type="text/javascript">
-            $('#editModal').on('show.bs.modal', function(event) {
-
-                // alert("In Function" );
-
-                var button = $(event.relatedTarget) // Button that triggered the modal         
-                var id = button.data('whateverid') // Extract info from data-* attributes
-                var cod = button.data('whatevercod')
-                var nome = button.data('whatevernome')
-                var rua = button.data('whateverrua')
-                var lado = button.data('whateverlado')
-                var armario = button.data('whateverarmario')
-                var andar = button.data('whateverandar')
-                var quantidade = button.data('whateverquantidade')
-                var observacao = button.data('whateverobservacao')
-
-                console.log(button)
-
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                    // modal.find('.modal-title').text('ID ' + recipient)
-                modal.find('#idPro').val(id)
-                modal.find('#codPro').val(cod)
-
-                modal.find('#editNome').val(nome)
-                modal.find('#editRua').val(rua)
-                modal.find('#editLado').val(lado)
-                modal.find('#editArmario').val(armario)
-                modal.find('#editAndar').val(andar)
-                modal.find('#editQuantidade').val(quantidade)
-                modal.find('#editObservacao').val(observacao)
+                altIndexItemRua()
+                altIndexItemRuaArmarios()
 
             })
-        </script>
-        <script language="Javascript">
-            function sucessAltIndexRua() {
-                Swal.fire({
-                position: 'center',
-                type: 'success',
-                title: 'Registro Alterado com Sucesso!',
-                showConfirmButton: false,
-                timer: 1500
-                })
-
-            }
-        </script>
-        <script language="Javascript">
-
-            function confirmDelIndexRua(id) {
-                // var resposta = confirm("Deseja remover esse registro?");
-
-                // if (resposta == true) {
-                //     window.location.href = "../assets/php/fluxo.php?action=delIndexRua&id="+id;
-                // }
-                Swal.fire({
-                    title: 'Você tem certeza??',
-                    text: 'Você não poderá recuperar este registro!',
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Sim, tenho certeza!',
-                    cancelButtonText: 'Não, mante-lo'
-                }).then((result) => {
-                    if (result.value) {
-                        Swal.fire(
-                            'Deletado!',
-                            'O registro foi deletado com sucesso.',
-                            'success'
-                        )
-                        setTimeout(function() {
-                            window.location.href = "../assets/php/fluxo.php?action=delIndexRua&id=" + id;
-                        }, 1000);
-
-                        // For more information about handling dismissals please visit
-                        // https://sweetalert2.github.io/#handling-dismissals
-                    } else if (result.dismiss === Swal.DismissReason.cancel) {
-                        Swal.fire(
-                            'Cancelado',
-                            'O registro foi mantido :)',
-                            'error'
-                        )
-                    }
-                })
-            }
-        </script>
-
-        <script>
-            const formLogin = document.getElementById("formAltIndexRua")
-
-            // console.log(formDataLogin.get("editNome"));
-
-            // formDataLogin.append("name","Jonas");
-            // console.log(formDataLogin.get("name"));
-
-            formLogin.addEventListener("submit", function(e) {
-                e.preventDefault();
-
-                const formDataLogin = new FormData(this);
-
-                fetch('../assets/php/fluxo.php?action=altIndexItemRua', {
-                    method: 'POST',
-                    body: formDataLogin
-                })
-                carregarListaItensRuas();
-                sucessAltIndexRua();
-
-                
-            });
         </script>
         <script>
             $().ready(function() {
@@ -1025,6 +951,5 @@
                 // });
             });
         </script>
-    </body>
 
     </html>

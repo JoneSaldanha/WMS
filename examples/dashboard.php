@@ -187,7 +187,7 @@
                              </a>
                          </div>
  
-                         <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+                         <div class="col-lg-3 col-md-6 col-sm-6">
                               <a data-toggle="modal" data-target="#entradaModal">
                                   <div class="card card-stats">
                                       <div class="card-header card-header-success card-header-icon">
@@ -199,12 +199,12 @@
                                       </div>
                                       <div class="card-footer">
                                           <div class="stats">
-                                              <i class="material-icons">list_alt</i> Lançar Entradas no Estoque
+                                              <i class="material-icons">call_received</i> Lançar Entradas no Estoque
                                           </div>
                                       </div>
                                   </div>
                               </a>
-                          </div> -->
+                          </div>
  
                          <div class="col-lg-3 col-md-6 col-sm-6">
                              <a href="estoque.php">
@@ -725,47 +725,18 @@
                          </p>
                          <div class="collapse" id="collapseRuas">
                              <div class="card card-body">
-                                 <form class="form" method="POST" id="cadItemRua"  action="">                                
+                                 <form class="form" method="POST" id="cadItemRua" >                                
                                      <div class="row has-danger">
-                                        <!-- <div class="col-lg-6">
-                                            <div id="msg"  class='alert alert-primary' role='alert'>
-                                                This is a primary alert with 
-                                                <a href='#' class='alert-link'>an example link</a>
-                                                Give it a click if you like.
-                                            </div>
-
-                                            <?php
-
-                                                // if(isset($_SESSION["msgValidacaoCad"])){
-                                                //     echo $_SESSION["msgValidacaoCad"];
-                                                //     $_SESSION["msgValidacaoCad"] = "";
-                                                // }
-                                            // ?>
-                                            
-                                        </div> -->
-                                         <!-- <div class="col-lg-6">
-
-                                             <label for="inputState">State</label>
-                                             <select id="inputState" class="form-control">
- 
-                                                             <option selected>...</option>
-                                                             <option selected disabled>Rua</option>
-                                                             <option>Armario</option>
- 
-                                                         </select>
-                                             <input type="text" class="form-control" placeholder="" value="Ruas" disabled>
-
-                                         </div> -->
 
                                      </div>
                                      <div class="row has-danger">
                                          <div class="col">
                                              <label for="inputNM">Nome</label>
-                                             <input type="text" class="form-control" name="nome" placeholder="" required="true">
+                                             <input type="text" class="form-control" name="nomeR" placeholder="" required="true">
                                          </div>
                                          <div class="col has-danger">
                                              <label for="inputQT">Quantidade</label>
-                                             <input type="number" class="form-control" name="quantidade" placeholder="" required="true">
+                                             <input type="number" class="form-control" name="quantidadeR" placeholder="" required="true">
                                          </div>
                                      </div>
                                      <div class="row has-danger">
@@ -782,7 +753,7 @@
                                          </div>
                                          <div class="col has-danger">
                                              <label for="inputLD">Lado</label>
-                                             <select id="inputLD" class="form-control" name="lado" required="true">
+                                             <select id="inputLD" class="form-control" name="ladoR" required="true">
  
                                                  <option>A</option>
                                                  <option>B</option>
@@ -792,7 +763,7 @@
                                      <div class="row has-danger">
                                          <div class="col">
                                              <label class="label-control">Armario</label>
-                                             <select id="inputNA" class="form-control" name="n_armario" required="true">
+                                             <select id="inputNA" class="form-control" name="n_armarioR" required="true">
  
                                                  <option>1</option>
                                                  <option>2</option>
@@ -804,7 +775,7 @@
                                          </div>
                                          <div class="col has-danger">
                                              <label for="inputAD">Andar</label>
-                                             <select id="inputAd" class="form-control" name="n_andar" required="true">
+                                             <select id="inputAd" class="form-control" name="n_andarR" required="true">
  
                                                  <option>1</option>
                                                  <option>2</option>
@@ -819,38 +790,26 @@
                                      <div class="row has-danger">
                                         <div class="col">
                                                 <label for="inputOBS">Observação</label>
-                                                <input type="text" class="form-control" name="observacao" placeholder="" required="true">
+                                                <input type="text" class="form-control" name="observacaoR" placeholder="" required="true">
                                         </div>
                                      </div>
                                      <div class="modal-footer justify-content-center">
                                          
-                                        <button type="submit" class="btn btn-success" onclick="setFormDataItemRua('cadItemRua', '../assets/php/fluxo.php?action=cadItemRua');">Executar</button>
-                                         <!-- <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button> -->
-                                         <a class="btn btn-danger" data-toggle="collapse" href="#collapseRuas" aria-expanded="false" data-target="#collapseRuas" aria-controls="collapseRuas">Cancelar</a>
+                                        <button type="submit" class="btn btn-success">Executar</button>
+                                        <a class="btn btn-danger" data-toggle="collapse" href="#collapseRuas" aria-expanded="false" data-target="#collapseRuas" aria-controls="collapseRuas">Cancelar</a>
 
                                      </div>
                                  </form>
                              </div>
  
                          </div>
+
                          <div class="collapse" id="collapseArmarios">
                              <div class="card card-body">
-                                 <form class="form" method="" id="cadItemArmario">
- 
-                                     <div class="row has-danger">
-                                         <div class="col-lg-6">
- 
-                                             <label for="inputState">State</label>
-                                             <!-- <select id="inputState" class="form-control">
- 
-                                                                     <option selected>...</option>
-                                                                     <option selected disabled>Rua</option>
-                                                                     <option>Armario</option>
- 
-                                                                 </select> -->
-                                             <input type="text" class="form-control" placeholder="" value="Armarios" disabled>
-                                         </div>
-                                     </div>
+                                 <form class="form" method="POST" id="cadItemArmario">
+                                    <div class="row has-danger">
+
+                                    </div>
                                      <div class="row has-danger">
                                          <div class="col">
                                              <label for="inputCP" class="label-control">Nome</label>
@@ -894,7 +853,7 @@
                                             </div>
                                     </div>
                                      <div class="modal-footer justify-content-center">
-                                        <button type="submit" class="btn btn-success" onclick="setFormDataItemRua('cadItemArmario', '../assets/php/fluxo.php?action=cadItemArmario');">Executar</button>
+                                        <button type="submit" class="btn btn-success">Executar</button>
                                         <!-- <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button> -->
                                         <a class="btn btn-danger" data-toggle="collapse" href="#collapseArmarios" aria-expanded="false" data-target="#collapseArmarios" aria-controls="collapseArmarios">Cancelar</a>
            
@@ -926,47 +885,88 @@
  
                              <div class="row has-danger">
                                  <div class="col">
-                                     <label for="inputOS">Ordem de Solicitação</label>
+                                     <label for="inputOS">Do Setor</label>
                                      <input type="text" class="form-control" placeholder="" required="true">
                                  </div>
                                  <div class="col has-danger">
-                                     <label for="inputOP">Ordem de Permissão</label>
-                                     <input type="text" class="form-control" placeholder="" required="true"> 
+                                     <label for="inputOP">Ao Setor</label>
+                                     <input type="text" class="form-control" placeholder="" required="true">                                                                                                  
                                  </div>
                              </div>
+
                              <div class="row has-danger">
                                  <div class="col">
-                                     <label for="inputCP">Cod Produto</label>
+                                     <label for="inputOS">Funcionario - Solicitante</label>
                                      <input type="text" class="form-control" placeholder="" required="true">
+                                 </div>
+                                 <div class="col has-danger">
+                                     <label for="inputOP">Funcionario - Solicitado</label>
+                                     <input type="text" class="form-control" placeholder="" required="true">                                                                                                  
+                                 </div>
+                             </div>
+
+                            <div class="row has-danger">
+
+                                <!-- <div id="cloneNode"> -->
+
+                                    <div id="cloneNodeCod" class="col-6">
+                                        <label for="inputCP">Cod Produto</label>
+                                        <input type="text" class="form-control" placeholder="" required="true">
+                                    </div>
+
+                                    <div id="cloneNodeQuantidade" class="col has-danger">  
+                                            <label for="inputQT">Quantidade</label>
+                                            <input type="number" class="form-control" placeholder="" required="true">                                             
+                                    </div>
+
+                                <!-- </div> -->
+                                <div class="row justify-content-between">
+                                    <div class="col-auto mr-auto">
+                                        <div class="form-group ">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-fab btn-round btn-success" onclick="cloneNodeAddItem()">
+                                                        <i class="material-icons">add</i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>                                           
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div id="cloneNodeTarget" class="row has-danger">
+
+                            </div>
+
+                             <div class="row has-danger">
+                                 <div class="col">
+                                     <label for="inputDT">Data</label>
+                                     <input id="dashDateSaida" type="date" class="form-control" placeholder="" required="true">
                                  </div>
                                  <div class="col has-danger">
                                      <label for="inputNM">Observação</label>
                                      <input type="text" class="form-control" placeholder="" required="true">
-                                 </div>
+                                 </div>                
                              </div>
-                             <div class="row has-danger">
-                                 <div class="col">
-                                     <label for="inputDT">Data</label>
-                                     <input type="date" class="form-control" placeholder="" required="true"> 
-                                 </div>
-                                 <div class="col has-danger">
-                                     <label for="inputQT">Quantidade</label>
-                                     <input type="number" class="form-control" placeholder="" required="true">
-                                 </div>
-                             </div>
+
+                             <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-success">Executar</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                            </div>
  
                          </form>
                      </div>
  
-                     <div class="modal-footer justify-content-center">
-                         <button type="button" class="btn btn-success">Executar</button>
-                         <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-                     </div>
+                     
                  </div>
              </div>
          </div>
      </div>
-     <!-- Modal - Entrada de Produtos -->
+     <!-- Modal - Ordem de Entrada -->
      <div class="modal fade in" id="entradaModal" tabindex="-1" role="dialog" aria-labelledby="entradaModal">
          <div class="modal-dialog  modal-lg" role="document">
              <div class="modal-content">
@@ -1059,8 +1059,12 @@
      <script src="../assets/demo/demo.js"></script>
 
     <script>
-
+ 
          $(document).ready(function() {
+            //  dateSet()
+             setPreventFormDataItemRua()
+             setPreventFormDataItemArmario()
+
              $().ready(function() {
                  $sidebar = $('.sidebar');
  

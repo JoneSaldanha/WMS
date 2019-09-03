@@ -1,4 +1,5 @@
 <?php 
+
     require_once 'conexao.php';
 
 
@@ -49,19 +50,12 @@
 
         function cadItemRua($nome, $n_rua, $lado, $n_armario, $n_andar, $quantidade, $observacao) {
             
-            $checkVar = $this -> pdo -> query ("SELECT nome FROM itens_ruas WHERE nome ='{$nome}'");
+            $checkVar = $this -> pdo -> query ("SELECT id FROM itens_ruas WHERE nome ='{$nome}'");
             $row = $checkVar -> rowCount();
 
             if ($row > 0) {
 
-                $_SESSION["msgValidacaoCad"] = "<div class='alert alert-primary' role='alert'>
-                                                    This is a primary alert with 
-                                                    <a href='#' class='alert-link'>an example link</a>
-                                                    Give it a click if you like.
-                                                </div>"; 
-
-                echo $_SESSION['msgValidacaoCad'];
-                echo "Cadastro n efetuado";
+                echo "Erro";
 
                 // header("Location:../../examples/dashboard.php");
 
@@ -76,48 +70,23 @@
                                 ':observacao' => $observacao);
 
                 $sqlInsert = $this -> pdo -> prepare("INSERT INTO itens_ruas (nome, n_rua, lado, n_armario, n_andar, quantidade, observacao) 
-                                                    VALUES (:nome, :n_rua, :lado, :n_armario, :n_andar, :quantidade, :observacao)");
-                                    
+                                                    VALUES (:nome, :n_rua, :lado, :n_armario, :n_andar, :quantidade, :observacao)");                                   
                 $sqlInsert -> execute($arrayData);
 
-                if(!$sqlInsert){
-
-                    $this -> pdo -> errorInfo();
-                }
-
-                echo "Cadastro efetuado";
+                echo "Sucesso";
             }
 
         }
 
         function cadItemArmario($nome, $n_armario, $n_andar, $quantidade, $observacao){
 
-            $checkVar = $this -> pdo -> query ("SELECT nome FROM itens_armarios WHERE nome = '{$nome}'");
+            $checkVar = $this -> pdo -> query ("SELECT id FROM itens_armarios WHERE nome = '{$nome}'");
             $row = $checkVar -> rowCount();
 
             if ($row > 0) {
 
-                var_dump ($row);
+                echo "Erro";
 
-                $_SESSION["msgValidacaoCad"] = "<div class='alert alert-primary' role='alert'>
-                                                    This is a primary alert with 
-                                                    <a href='#' class='alert-link'>an example link</a>
-                                                    Give it a click if you like.
-                                                </div>"; 
-                echo $_SESSION['msgValidacaoCad'];
-                echo "Cadastro n efetuado";
-               
-               
-               
-                // // echo"<script type='text/javascript'>alert('Um item com esses dados já se cadastrou. Tente novamente.');window.location.href='cadastro.php';</script>";
-                // // header("Location:../../examples/dashboard.php");
-                // echo "document.getElementById('ID_DO_ELEMENTO').classList.remove('NOME_DA_CLASSE')";
-               
-                // echo "function show () {
-                //     document.getElementById('msg').style.display = 'block';
-                //   }";
-
-            
             }else{
 
                 $arrayData = array(':nome' => $nome,
@@ -136,7 +105,7 @@
                     $this -> pdo -> errorInfo();
                 }
 
-                var_dump($sqlInsert);
+                echo "Sucesso";
                 
             }
 
@@ -146,34 +115,16 @@
 
         function altItemRua($id, $altNome,$altRua, $altLado, $altArmario, $altAndar, $altObservacao){
 
-            // var_dump($id);
             $idPro = (int)$id;
-            // echo "<br>";
-            var_dump($idPro);
-            echo "<br>";
 
+            // $sqlSelect = $this -> pdo -> query ("SELECT id FROM itens_ruas WHERE nome = $altNome");
+            // $row = $sqlSelect -> fetch();
 
-            $sqlSelect = $this -> pdo -> query ("SELECT nome FROM itens_ruas WHERE id = $idPro");
-            $row = $sqlSelect -> fetch();
+            // if($row+1 > 1){
+                
+            //     echo "Erro";
 
-            var_dump($sqlSelect);
-            echo "<br>";
-
-
-
-
-            if($row > 0){
-                echo "If";
-                echo "<br>";
-
-
-                // $arrayData = array('id' => $id,
-                //                    ':altNome' => $altNome,
-                //                    ':altRua' => $altRua,
-                //                    ':altLado' => $altLado,
-                //                    ':altArmario' => $altArmario,
-                //                    ':altAndar' => $altAndar,
-                //                    ':altObservacao' => $altObservacao);
+            // }else{
 
                 $sqlUpdate = $this -> pdo -> query ("UPDATE `itens_ruas` 
                                                        SET `nome` = '{$altNome}',
@@ -183,13 +134,39 @@
                                                        `n_andar` = '{$altAndar}',
                                                        `observacao` = '{$altObservacao}'
                                                         WHERE `id` = '{$idPro}'");
-                var_dump($sqlUpdate);
+                echo "Sucesso";
 
                 // $sqlUpdate -> execute($arrayData);
 
-            }else{
-                echo "Else";
-            }
+            // }
+
+
+        }
+        
+        function altItemArmario($id, $altNome, $altArmario, $altAndar, $altObservacao){
+
+            $idPro = (int)$id;
+
+            // $sqlSelect = $this -> pdo -> query ("SELECT id FROM itens_ruas WHERE nome = $altNome");
+            // $row = $sqlSelect -> fetch();
+
+            // if($row+1 > 1){
+                
+            //     echo "Erro";
+
+            // }else{
+
+                $sqlUpdate = $this -> pdo -> query ("UPDATE `itens_armarios` 
+                                                       SET `nome` = '{$altNome}',
+                                                       `n_armario` = '{$altArmario}',
+                                                       `n_andar` = '{$altAndar}',
+                                                       `observacao` = '{$altObservacao}'
+                                                        WHERE `id` = '{$idPro}'");
+                echo "Sucesso";
+
+                // $sqlUpdate -> execute($arrayData);
+
+            // }
 
 
         }
@@ -201,6 +178,24 @@
             
             if(!$sqlDelIndexRua){
                 $this -> pdo -> errorInfo();
+
+            }else{
+                echo "Sucesso";
+            }
+            
+
+        }
+        function delIndexArmario($idDelIndex){
+
+            $sqlDelIndexRua = $this -> pdo -> query("DELETE FROM `itens_armarios` WHERE id = $idDelIndex");
+            header("Location:../../examples/estoque.php");
+
+            
+            if(!$sqlDelIndexRua){
+                $this -> pdo -> errorInfo();
+
+            }else{
+                echo "Sucesso";
             }
             
 

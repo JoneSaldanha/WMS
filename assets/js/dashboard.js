@@ -1,66 +1,75 @@
 
+function dateSet(){
 
-function setFormDataItemRua(idFormData, caminhoFormData){
-
-    var jsonReq;
-    console.log(idFormData);
-
-    if(idFormData == "cadItemRua" ){
-        jsonReq = '../assets/php/jsonListRuas.php';
-    }else if(idFormData == "cadItemArmario"){
-        jsonReq = '../assets/php/jsonListArmarios.php';
+    $('#saidaModal').on('show.bs.modal', function(event) {       
+        var now  = new Date();
+        var date = now.getDate()  + '/' + (now.getMonth() + 1) + '/' + now.getFullYear();
+        modal.find('#dashDateSaida').val(date);
+    })
+}
+function setPreventFormDataItemRua(){
+    caminhoFormData = "../assets/php/fluxo.php?action=cadItemRua";
+    const formCadItem =  document.querySelector("#cadItemRua")
+    formCadItem.onsubmit = function(e){
+        e.preventDefault()
+        setFormDataItem(formCadItem, caminhoFormData)
+           
     }
-
-    
-  
-    const formLogin = document.getElementById(idFormData);
-    // console.log(formDataLogin.get("editNome"));
-    formLogin.addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const formDataLogin = new FormData(this);
-        // formDataLogin.append("name","Parafuso");
-        // console.log(formDataLogin.get("name"));
-        console.log(formDataLogin.get("nome"));
-
-        $.ajax({
-            type: 'post', //Definimos o método HTTP usado
-            dataType: 'json', //Definimos o tipo de retorno
-            url: jsonReq, //Definindo o arquivo onde serão buscados os dados
-            success: function(dados) {
-                console.log(dados);
-                // for (var i = 0; dados.length > i; i++) {
-                    const nomeJaExiste = dados.some((item) => item.nome == formDataLogin.get("nome"))
-                    if(nomeJaExiste){
-
-                        Swal.fire({
-                            type: 'error',
-                            title: 'Erro!',
-                            text: 'Esse item ja existe',
-                            })
-                        // break;
-
-                    }else{
-
-                        fetch(caminhoFormData, {
-                            method: 'POST',
-                            body: formDataLogin
-                        })
-                        Swal.fire({
-                            position: 'center',
-                            type: 'success',
-                            title: 'Item cadastrado com sucesso',
-                            showConfirmButton: false,
-                            timer: 2000
-                            })
-                            formLogin.reset();
-                            // break;
-
-                        
-                        // }
-
-                    }
-                }
-            });
-        })
+}
+function setPreventFormDataItemArmario(){
+    caminhoFormData = "../assets/php/fluxo.php?action=cadItemArmario";
+    const formCadItem =  document.querySelector("#cadItemArmario")
+    formCadItem.onsubmit = function(e){
+        e.preventDefault()
+        setFormDataItem(formCadItem, caminhoFormData)
+           
     }
+}
+
+
+function setFormDataItem(formCadItem, caminhoFormData){
+
+    const formDataCadItem = new FormData(formCadItem);
+
+    fetch(caminhoFormData, {
+        method: 'POST',
+        body: formDataCadItem
+
+    }).then(response => response.text())
+    .then(text => {
+
+        if( text == 'Sucesso') {
+            console.log("Sucesso")
+            Swal.fire({
+                
+                position: 'center',
+                type: 'success',
+                title: 'Item cadastrado com sucesso',
+                showConfirmButton: false,
+                timer: 2000
+                })
+
+                formCadItem.reset()
+
+
+        }else{
+            console.log("Erro")
+
+            Swal.fire({
+                type: 'error',
+                title: 'Erro!',
+                text: 'Esse item ja existe',
+                })
+
+        } 
+    })
+}
+
+function cloneNodeAddItem() {
+    var $cloneCod = $('#cloneNodeCod').clone();
+    var $cloneQuant = $('#cloneNodeQuantidade').clone();
+
+    $('#cloneNodeTarget').append($cloneCod);
+    $('#cloneNodeTarget').append($cloneQuant);
+
+}
