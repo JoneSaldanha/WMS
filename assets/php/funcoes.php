@@ -201,5 +201,23 @@
 
         }
 
+        function salvarRegistro($do_setor, $ao_setor, $solicitante, $solicitado, $data, $observacao, $arrayCod, $arrayQuantidade){
+
+            $arrayData = = array(':do_setor' => $do_setor,
+                                 ':ao_setor' => $ao_setor,
+                                 ':solicitante' => $solicitante,
+                                 ':solicitado' => $solicitado,
+                                 ':data_reg' => $data,
+                                 ':observacao' => $observacao);
+
+            $sqlInsert = $this -> pdo -> prepare("INSERT INTO registros (do_setor, ao_setor, func_solicitante, func_solicitado, data_reg, observacao) 
+                                                  VALUES (:do_setor, :ao_setor, :solicitante, :solicitado, :data_reg, :observacao)");
+
+            $sqlInsert -> execute ($arrayData);
+
+            echo "Sucesso";
+
+        }
+
     }
 ?>

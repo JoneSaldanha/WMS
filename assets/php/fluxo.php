@@ -61,7 +61,13 @@
         $n_andar = $_POST["editAndar"];
         $observacao = $_POST["editObservacao"];
 
-        $u -> altItemRua($id, $nome, $n_rua, $lado, $n_armario, $n_andar, $observacao);
+        $u -> altItemRua($id, 
+                         $nome, 
+                         $n_rua, 
+                         $lado, 
+                         $n_armario, 
+                         $n_andar, 
+                         $observacao);
 
     }    
     else if($action == "altIndexItemArmario"){
@@ -72,7 +78,11 @@
         $n_andar = $_POST["editAndar"];
         $observacao = $_POST["editObservacao"];
 
-        $u -> altItemArmario($id, $nome, $n_armario, $n_andar, $observacao);
+        $u -> altItemArmario($id,
+                             $nome,
+                             $n_armario,
+                             $n_andar, 
+                             $observacao);
 
     }    
 
@@ -85,6 +95,32 @@
         
         $idIndexDel = $_GET["id"];
         $u -> delIndexArmario($idIndexDel);
+    }
+    else if($action == "salvarRegistro"){
+
+        $do_setor = $_POST["do_setor"];
+        $ao_setor = $_POST["ao_setor"];
+        $solicitante = $_POST["solicitante"];
+        $solicitado = $_POST["solicitado"];
+        $data = $_POST["data"];
+        $observacao = $_POST["observacao"];
+
+        $arrayCod = $_POST["cod"]
+        $arrayQuantidade = $_POST["quantidade"]
+
+        $u -> saveRegistro($do_setor, 
+                           $ao_setor, 
+                           $solicitante, 
+                           $solicitado, 
+                           $data, 
+                           $observacao, 
+                           $arrayCod, 
+                           $arrayQuantidade);
+
+        // $u -> salvarRegistro();
+
+
+            
     }
     
     else if ($action == "sectionDestroy") {

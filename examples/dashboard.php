@@ -881,27 +881,27 @@
                          </button>
                      </div>
                      <div class="modal-body">
-                         <form class="form" method="" action="">
+                         <form id="ordSaida" class="form" method="" action="">
  
                              <div class="row has-danger">
                                  <div class="col">
                                      <label for="inputOS">Do Setor</label>
-                                     <input type="text" class="form-control" placeholder="" required="true">
+                                     <input name="do_setor" type="text" class="form-control" placeholder="" required="true">
                                  </div>
                                  <div class="col has-danger">
                                      <label for="inputOP">Ao Setor</label>
-                                     <input type="text" class="form-control" placeholder="" required="true">                                                                                                  
+                                     <input name="ao_setor" type="text" class="form-control" placeholder="" required="true">                                                                                                  
                                  </div>
                              </div>
 
                              <div class="row has-danger">
                                  <div class="col">
                                      <label for="inputOS">Funcionario - Solicitante</label>
-                                     <input type="text" class="form-control" placeholder="" required="true">
+                                     <input name="solicitante" type="text" class="form-control" placeholder="" required="true">
                                  </div>
                                  <div class="col has-danger">
                                      <label for="inputOP">Funcionario - Solicitado</label>
-                                     <input type="text" class="form-control" placeholder="" required="true">                                                                                                  
+                                     <input name="solicitado" type="text" class="form-control" placeholder="" required="true">                                                                                                  
                                  </div>
                              </div>
 
@@ -911,12 +911,12 @@
 
                                     <div id="cloneNodeCod" class="col-6">
                                         <label for="inputCP">Cod Produto</label>
-                                        <input type="text" class="form-control" placeholder="" required="true">
+                                        <input name="cod[]" type="text" class="form-control" placeholder="" required="true">
                                     </div>
 
                                     <div id="cloneNodeQuantidade" class="col has-danger">  
-                                            <label for="inputQT">Quantidade</label>
-                                            <input type="number" class="form-control" placeholder="" required="true">                                             
+                                        <label for="inputQT">Quantidade</label>
+                                        <input name="quantidade[]" type="number" class="form-control" placeholder="" required="true">                                             
                                     </div>
 
                                 <!-- </div> -->
@@ -945,16 +945,16 @@
                              <div class="row has-danger">
                                  <div class="col">
                                      <label for="inputDT">Data</label>
-                                     <input id="dashDateSaida" type="date" class="form-control" placeholder="" required="true">
+                                     <input name="data" id="dashDateSaida" type="date" class="form-control" placeholder="" required="true">
                                  </div>
                                  <div class="col has-danger">
                                      <label for="inputNM">Observação</label>
-                                     <input type="text" class="form-control" placeholder="" required="true">
+                                     <input name="observacao" type="text" class="form-control" placeholder="" required="true">
                                  </div>                
                              </div>
 
                              <div class="modal-footer justify-content-center">
-                                <button type="button" class="btn btn-success">Executar</button>
+                                <button type="submit" class="btn btn-success">Executar</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
                             </div>
  
@@ -1062,6 +1062,7 @@
  
          $(document).ready(function() {
             //  dateSet()
+             setPreventFormDataRegistro()
              setPreventFormDataItemRua()
              setPreventFormDataItemArmario()
 
