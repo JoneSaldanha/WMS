@@ -97,7 +97,7 @@
         $u -> delIndexArmario($idIndexDel);
     }
     else if($action == "salvarRegistro"){
-
+        $area = $_POST["area"];
         $do_setor = $_POST["do_setor"];
         $ao_setor = $_POST["ao_setor"];
         $solicitante = $_POST["solicitante"];
@@ -120,14 +120,24 @@
 
         }else{
 
-            $u -> salvarRegistro($do_setor, 
-                             $ao_setor, 
-                             $solicitante, 
-                             $solicitado, 
-                             $data, 
-                             $observacao, 
-                             $arrayCod, 
-                             $arrayQuantidade);
+            if($area == "Ruas"){
+
+                $tabela = "itens_ruas";
+
+            }else if($area == "Armarios"){
+
+                $tabela = "itens_armarios";
+            }
+                $u -> salvarRegistro($tabela,
+                                     $do_setor, 
+                                     $ao_setor, 
+                                     $solicitante, 
+                                     $solicitado, 
+                                     $data, 
+                                     $observacao, 
+                                     $arrayCod, 
+                                     $arrayQuantidade);
+            
 
         }
 

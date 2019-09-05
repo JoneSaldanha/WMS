@@ -262,10 +262,9 @@
 
         }
 
-        function salvarRegistro($do_setor, $ao_setor, $solicitante, $solicitado, $data, $observacao, $arrayCod, $arrayQuantidade){
+        function salvarRegistro($tabelaBaixa, $do_setor, $ao_setor, $solicitante, $solicitado, $data, $observacao, $arrayCod, $arrayQuantidade){
 
 
-            $tabelaBaixa = "itens_ruas";
             $tabelaId = "registros";
       
             $lastPass = $this -> validaBaixaNoItem($tabelaBaixa, $arrayCod, $arrayQuantidade);

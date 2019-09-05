@@ -882,6 +882,20 @@
                      </div>
                      <div class="modal-body">
                          <form id="ordSaida" class="form" method="" action="">
+
+                             <div class="row has-danger">
+
+                                <div class="col">
+                                    <label class="label-control">Área</label>
+                                    <select id="area" class="form-control" name="area" required="true">
+                                        <option selected></option>
+                                        <option>Ruas</option>
+                                        <option>Armarios</option>
+
+                                    </select>
+                                </div>                                   
+                                          
+                             </div>
  
                              <div class="row has-danger">
                                  <div class="col">
