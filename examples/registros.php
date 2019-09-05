@@ -153,32 +153,17 @@
                                      <div class="table-responsive">
                                          <table class="table">
                                              <thead class="">
-                                                 <th class="text-center">ID</th>
-                                                 <th>Name</th>
-                                                 <th>Country</th>
-                                                 <th>City</th>
-                                                 <th>Salary</th>
+                                                 <th>ID</th>
+                                                 <th>Do Setor</th>
+                                                 <th>Ao Setor</th>
+                                                 <th>Solicitante</th>
+                                                 <th>Solicitado</th>
+                                                 <th class="text-center">Itens</th>
+                                                 <th>Data</th>
+                                                 <th>Observacao</th>
                                                  <th class="text-center">Ações</th>
                                              </thead>
-                                             <tbody>
-                                                 <tr>
-                                                     <td class="text-center">1</td>
-                                                     <td>Dakota Rice</td>
-                                                     <td> Niger</td>
-                                                     <td>Oud-Turnhout</td>
-                                                     <td class="">$36,738</td>
-                                                     <td class="td-actions text-center">
-                                                            <!-- <button type="button" rel="tooltip" class="btn btn-info">
-                                                                <i class="material-icons">person</i>
-                                                            </button> -->
-                                                            <button type="button" rel="tooltip" class="btn btn-success">
-                                                                <i class="material-icons">edit</i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" class="btn btn-danger">
-                                                                <i class="material-icons">close</i>
-                                                            </button>
-                                                        </td>
-                                                 </tr>
+                                             <tbody id="listRegistros">
                                              </tbody>
                                          </table>
                                          <div class="copyright float-right">
@@ -196,119 +181,6 @@
                                  </div>
                              </div>
                          </div>
-                         <!-- <div class="col-md-12">
-                             <div class="card card-plain">
-                                 <div class="card-header card-header-danger">
-                                     <h4 class="card-title mt-0"> Table on Plain Background</h4>
-                                     <p class="card-category"> Here is a subtitle for this table</p>
-                                 </div>
-                                 <div class="card-body">
-                                     <div class="table-responsive">
-                                         <table class="table table-hover">
-                                             <thead class="">
-                                                 <th>ID</th>
-                                                 <th>Name</th>
-                                                 <th>Country</th>
-                                                 <th>City</th>
-                                                 <th>Salary</th>
-                                             </thead>
-                                             <tbody>
-                                                 <tr>
-                                                     <td>1</td>
-                                                     <td>Dakota Rice
-                                                     </td><td>Niger
-                                                     </td>
-                                                     <td>Oud-Turnhout</td>
-                                                     <td>$36,738</td>
-                                                 </tr>
-                                                 <tr>
-                                                     <td>2</td>
-                                                     <td>
-                                                         Minerva Hooper</td>
-                                                     <td>
-                                                         Curaçao
-                                                     </td>
-                                                     <td>
-                                                         Sinaai-Waas
-                                                     </td>
-                                                     <td>
-                                                         $23,789
-                                                     </td>
-                                                 </tr>
-                                                 <tr>
-                                                     <td>
-                                                         3
-                                                     </td>
-                                                     <td>
-                                                         Sage Rodriguez
-                                                     </td>
-                                                     <td>
-                                                         Netherlands
-                                                     </td>
-                                                     <td>
-                                                         Baileux
-                                                     </td>
-                                                     <td>
-                                                         $56,142
-                                                     </td>
-                                                 </tr>
-                                                 <tr>
-                                                     <td>
-                                                         4
-                                                     </td>
-                                                     <td>
-                                                         Philip Chaney
-                                                     </td>
-                                                     <td>
-                                                         Korea, South
-                                                     </td>
-                                                     <td>
-                                                         Overland Park
-                                                     </td>
-                                                     <td>
-                                                         $38,735
-                                                     </td>
-                                                 </tr>
-                                                 <tr>
-                                                     <td>
-                                                         5
-                                                     </td>
-                                                     <td>
-                                                         Doris Greene
-                                                     </td>
-                                                     <td>
-                                                         Malawi
-                                                     </td>
-                                                     <td>
-                                                         Feldkirchen in Kärnten
-                                                     </td>
-                                                     <td>
-                                                         $63,542
-                                                     </td>
-                                                 </tr>
-                                                 <tr>
-                                                     <td>
-                                                         6
-                                                     </td>
-                                                     <td>
-                                                         Mason Porter
-                                                     </td>
-                                                     <td>
-                                                         Chile
-                                                     </td>
-                                                     <td>
-                                                         Gloucester
-                                                     </td>
-                                                     <td>
-                                                         $78,615
-                                                     </td>
-                                                 </tr>
-                                             </tbody>
-                                         </table>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div> -->
                      </div>
                  </div>
              </div>
@@ -342,6 +214,35 @@
              </footer>
          </div>
      </div>
+     <div class="modal fade in" id="showItensReg" tabindex="-1" role="dialog" aria-labelledby="showItensReg">
+         <div class="modal-dialog  modal-lg" role="document">
+             <div class="modal-content">
+                 <div class="card card-signup card-plain">
+                     <div class="modal-header">
+                         <h3 class="modal-title text-center" id="myModalLabel"> Itens do Registro </h3>
+                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                             <i aria-hidden="true" class="material-icons">close</i>
+                         </button>
+                     </div>
+                     <div class="modal-body">
+                        <table class="table">
+                            <thead class="">
+                                <th>ID</th>
+                                <th>Registro</th>
+                                <th>Produto</th>
+                                <th>Quantidade da Saída</th>
+                            </thead>
+                            <tbody id="listItensRegistros">
+                            </tbody>
+                        </table>
+                    </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!-- Scripts REGISTROS -->
+     <script src="../assets/js/registros.js"></script>
      <!--   Core JS Files   -->
      <script src="../assets/js/core/jquery.min.js"></script>
      <script src="../assets/js/core/popper.min.js"></script>
@@ -387,6 +288,8 @@
      <script src="../assets/demo/demo.js"></script>
      <script>
          $(document).ready(function() {
+            carregarListaRegistros()
+            showItensReg()
              $().ready(function() {
                  $sidebar = $('.sidebar');
  

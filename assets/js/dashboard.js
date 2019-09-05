@@ -9,12 +9,12 @@
 // }
 
 function setPreventFormDataItemRua(){
-    caminhoFormData = "../assets/php/fluxo.php?action=cadItemRua";
-    const formCadItem =  document.querySelector("#cadItemRua")
-    formCadItem.onsubmit = function(e){
+    caminhoFormDataRua = "../assets/php/fluxo.php?action=cadItemRua";
+    const formCadItemRua =  document.querySelector("#cadItemRua")
+    formCadItemRua.onsubmit = function(e){
 
         e.preventDefault();
-        setFormDataItem(formCadItem, caminhoFormData);
+        setFormDataItem(formCadItemRua, caminhoFormDataRua);
            
     }
 }
@@ -50,6 +50,7 @@ function setFormDataItem(formCadItem, caminhoFormData){
 
     }).then(response => response.text())
     .then(text => {
+        console.log(text);
 
         if( text == 'Sucesso') {
             console.log("Sucesso")
@@ -99,8 +100,18 @@ function setFormDataReg(formSaveReg, caminhoSaveReg){
                     timer: 2000
                     })
 
-                    // formSaveReg.reset()
+                    formSaveReg.reset()
 
+
+            }else if(text == 'Valores Duplicados'){
+
+                console.log("Erro")
+
+                Swal.fire({
+                    type: 'error',
+                    title: 'Erro!',
+                    text: 'Existem itens duplicados',
+                    })
 
             }else{
                 console.log("Erro")
@@ -116,10 +127,24 @@ function setFormDataReg(formSaveReg, caminhoSaveReg){
 }
 
 function cloneNodeAddItem() {
-    var $cloneCod = $('#cloneNodeCod').clone();
-    var $cloneQuant = $('#cloneNodeQuantidade').clone();
 
-    $('#cloneNodeTarget').append($cloneCod);
-    $('#cloneNodeTarget').append($cloneQuant);
+    // $('#addCloneNode').click(function() {
 
+
+    var $cloneNode = $('#cloneNode').clone();
+    var _elm = $cloneNode.clone();
+    _elm.find("input").val("");
+    _elm.find('#butRemoveClone').show();
+    _elm.find('#butRemoveClone').addClass("butRemoveClone");
+
+    $('#cloneNodeTarget').append(_elm);
+
+    // });
+
+    $(document).on("click", ".butRemoveClone", function(e) {
+        var $e = $(e.currentTarget);
+        $e.closest('#cloneNode').remove();
+    
+    });
 }
+

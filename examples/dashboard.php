@@ -762,8 +762,8 @@
                                      </div>
                                      <div class="row has-danger">
                                          <div class="col">
-                                             <label class="label-control">Armario</label>
-                                             <select id="inputNA" class="form-control" name="n_armarioR" required="true">
+                                             <label class="label-control">Prateleira</label>
+                                             <select id="inputNA" class="form-control" name="n_prateleiraR" required="true">
  
                                                  <option>1</option>
                                                  <option>2</option>
@@ -806,7 +806,7 @@
 
                          <div class="collapse" id="collapseArmarios">
                              <div class="card card-body">
-                                 <form class="form" method="POST" id="cadItemArmario">
+                                 <form id="cadItemArmario">
                                     <div class="row has-danger">
 
                                     </div>
@@ -905,28 +905,40 @@
                                  </div>
                              </div>
 
-                            <div class="row has-danger">
+                            <div id="cloneNode" class="row has-danger">
 
-                                <!-- <div id="cloneNode"> -->
+                                <div id="cloneNodeCod" class="col-6">
+                                    <label for="inputCP">Cod Produto</label>
+                                    <input name="cod[]" type="text" class="form-control" placeholder="" required="true">
+                                </div>
 
-                                    <div id="cloneNodeCod" class="col-6">
-                                        <label for="inputCP">Cod Produto</label>
-                                        <input name="cod[]" type="text" class="form-control" placeholder="" required="true">
+                                <div id="cloneNodeQuantidade" class="col has-danger">  
+                                    <label for="inputQT">Quantidade</label>
+                                    <input name="quantidade[]" type="number" class="form-control" placeholder="" required="true">                                             
+                                </div>
+
+
+                                <div id="divBut" class="row">
+                                    <div class="col-auto mr-auto">
+                                        <div class="form-group ">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button id="addCloneNode" type="button" class="btn btn-fab btn-round btn-success" onclick="cloneNodeAddItem()">
+                                                        <i class="material-icons">add</i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>                                           
                                     </div>
+                                </div>
 
-                                    <div id="cloneNodeQuantidade" class="col has-danger">  
-                                        <label for="inputQT">Quantidade</label>
-                                        <input name="quantidade[]" type="number" class="form-control" placeholder="" required="true">                                             
-                                    </div>
-
-                                <!-- </div> -->
                                 <div class="row justify-content-between">
                                     <div class="col-auto mr-auto">
                                         <div class="form-group ">
                                             <div class="input-group">
                                                 <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-fab btn-round btn-success" onclick="cloneNodeAddItem()">
-                                                        <i class="material-icons">add</i>
+                                                    <button id="butRemoveClone" style="display:none" type="button" class="btn btn-fab btn-round btn-danger">
+                                                        <i class="material-icons">remove</i>
                                                     </button>
                                                 </span>
                                             </div>
@@ -938,7 +950,7 @@
 
 
 
-                            <div id="cloneNodeTarget" class="row has-danger">
+                            <div id="cloneNodeTarget">
 
                             </div>
 
@@ -1062,9 +1074,13 @@
  
          $(document).ready(function() {
             //  dateSet()
-             setPreventFormDataRegistro()
-             setPreventFormDataItemRua()
-             setPreventFormDataItemArmario()
+            // cloneNodeAddItem()
+            
+
+
+            setPreventFormDataRegistro()
+            setPreventFormDataItemRua()
+            setPreventFormDataItemArmario()
 
              $().ready(function() {
                  $sidebar = $('.sidebar');

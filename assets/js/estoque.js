@@ -61,11 +61,11 @@ function carregarListaItensRuas() {
             for (var i = 0; dados.length > i; i++) {
                 //Adicionando registros retornados na tabela
                 $('#listItensRuas').append('<tr>' + '<td>' + dados[i].id + '</td>' +
-                    '<td>' + dados[i].id + dados[i].n_rua + dados[i].lado + dados[i].n_armario + dados[i].n_andar + '</td>' +
+                    '<td>' + dados[i].id + dados[i].n_rua + dados[i].lado + dados[i].n_prateleira + dados[i].n_andar + '</td>' +
                     '<td>' + dados[i].nome + '</td>' +
                     '<td>' + dados[i].n_rua + '</td>' +
                     '<td>' + dados[i].lado + '</td>' +
-                    '<td>' + dados[i].n_armario + '</td>' +
+                    '<td>' + dados[i].n_prateleira + '</td>' +
                     '<td>' + dados[i].n_andar + '</td>' +
                     '<td>' + dados[i].quantidade + '</td>' +
                     '<td>' + dados[i].observacao + '</td>' +
@@ -81,11 +81,11 @@ function carregarListaItensRuas() {
                     '</button>' +
 
                     '<button type="button" rel="tooltip" class="btn btn-info" data-toggle="modal" data-target="#editModalRua" data-whateverid =' + dados[i].id + " " +
-                    'data-whatevercod =' + dados[i].id + dados[i].n_rua + dados[i].lado + dados[i].n_armario + dados[i].n_andar + " " +
+                    'data-whatevercod =' + dados[i].id + dados[i].n_rua + dados[i].lado + dados[i].n_prateleira + dados[i].n_andar + " " +
                     'data-whatevernome =' + dados[i].nome + " " +
                     'data-whateverrua =' + dados[i].n_rua + " " +
                     'data-whateverlado =' + dados[i].lado + " " +
-                    'data-whateverarmario =' + dados[i].n_armario + " " +
+                    'data-whateverprateleira =' + dados[i].n_prateleira + " " +
                     'data-whateverandar =' + dados[i].n_andar + " " +
                     'data-whateverquantidade =' + dados[i].quantidade + " " +
                     'data-whateverobservacao =' + dados[i].observacao + ">" +
@@ -105,6 +105,7 @@ function carregarListaItensRuas() {
     });
 }
 
+
 function povoaModalDeEdicaoRuas(){
 
     $('#editModalRua').on('show.bs.modal', function(event) {
@@ -117,7 +118,7 @@ function povoaModalDeEdicaoRuas(){
         var nome = button.data('whatevernome')
         var rua = button.data('whateverrua')
         var lado = button.data('whateverlado')
-        var armario = button.data('whateverarmario')
+        var armario = button.data('whateverprateleira')
         var andar = button.data('whateverandar')
         var quantidade = button.data('whateverquantidade')
         var observacao = button.data('whateverobservacao')
@@ -263,7 +264,7 @@ function altIndexItemRua(){
         }).then(response => response.text())
         .then(text => {
             if( text === 'Sucesso') {
-                sucessAltIndexRua();
+                sucessAltIndex();
                 carregarListaItensRuas();
 
             }else{

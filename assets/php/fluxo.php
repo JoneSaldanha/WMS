@@ -18,7 +18,7 @@
         $nome = $_POST["nomeR"];
         $n_rua = $_POST["n_rua"];
         $lado = $_POST["ladoR"];
-        $n_armario = $_POST["n_armarioR"];
+        $n_prateleira = $_POST["n_prateleiraR"];
         $n_andar = $_POST["n_andarR"];
         $quantidade = $_POST["quantidadeR"];
         $observacao = $_POST["observacaoR"];
@@ -26,7 +26,7 @@
         $u -> cadItemRua($nome, 
                          $n_rua, 
                          $lado, 
-                         $n_armario, 
+                         $n_prateleira, 
                          $n_andar, 
                          $quantidade, 
                          $observacao);
@@ -57,7 +57,7 @@
         $nome = $_POST["editNome"];
         $n_rua = $_POST["editRua"];
         $lado = $_POST["editLado"];
-        $n_armario = $_POST["editArmario"];
+        $n_prateleira = $_POST["editPrateleira"];
         $n_andar = $_POST["editAndar"];
         $observacao = $_POST["editObservacao"];
 
@@ -65,7 +65,7 @@
                          $nome, 
                          $n_rua, 
                          $lado, 
-                         $n_armario, 
+                         $n_prateleira, 
                          $n_andar, 
                          $observacao);
 
@@ -105,22 +105,48 @@
         $data = $_POST["data"];
         $observacao = $_POST["observacao"];
 
-        $arrayCod = $_POST["cod"]
-        $arrayQuantidade = $_POST["quantidade"]
+        $arrayCod = $_POST["cod"];
+        $arrayQuantidade = $_POST["quantidade"];
 
-        $u -> saveRegistro($do_setor, 
-                           $ao_setor, 
-                           $solicitante, 
-                           $solicitado, 
-                           $data, 
-                           $observacao, 
-                           $arrayCod, 
-                           $arrayQuantidade);
+        function getDuplicates( $array ) {
+            return array_unique( array_diff_assoc( $array, array_unique( $array ) ) );
+        }
+        
+        $dupCod = sizeof(getDuplicates($arrayCod));
+        
+        if($dupCod > 0){
+
+            echo "Valores Duplicados";
+
+        }else{
+
+            $u -> salvarRegistro($do_setor, 
+                             $ao_setor, 
+                             $solicitante, 
+                             $solicitado, 
+                             $data, 
+                             $observacao, 
+                             $arrayCod, 
+                             $arrayQuantidade);
+
+        }
+
+
+        
+
+        
 
         // $u -> salvarRegistro();
 
 
             
+    }
+    else if($action == "listItensReg"){
+
+        $idReg = $_GET["id"];
+
+        $u -> listItensReg($idReg);
+
     }
     
     else if ($action == "sectionDestroy") {

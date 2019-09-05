@@ -157,7 +157,7 @@
                                                     <th>Nome</th>
                                                     <th>Rua</th>
                                                     <th>Lado</th>
-                                                    <th>Armario</th>
+                                                    <th>Prateleira</th>
                                                     <th>Andar</th>
                                                     <th>Quantidade</th>
                                                     <th>Observação</th>
@@ -461,8 +461,8 @@
                                 </div>
                                 <div class="row has-danger">
                                     <div class="col">
-                                        <label class="label-control">Armario</label>
-                                        <select type="" class="form-control" name="editArmario" id="editArmario" required="true">
+                                        <label class="label-control">Prateleira</label>
+                                        <select type="" class="form-control" name="editPrateleira" id="editArmario" required="true">
 
                                             <option type="" value="1">1</option>
                                             <option type="" value="2">2</option>
