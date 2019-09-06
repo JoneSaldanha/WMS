@@ -154,6 +154,7 @@
                                          <table class="table">
                                              <thead class="">
                                                  <th>ID</th>
+                                                 <th>Área</th>
                                                  <th>Do Setor</th>
                                                  <th>Ao Setor</th>
                                                  <th>Solicitante</th>
@@ -163,7 +164,7 @@
                                                  <th>Observacao</th>
                                                  <th class="text-center">Ações</th>
                                              </thead>
-                                             <tbody id="listRegistros">
+                                             <tbody id="listRegistrosSaida">
                                              </tbody>
                                          </table>
                                          <div class="copyright float-right">
@@ -184,6 +185,46 @@
                      </div>
                  </div>
              </div>
+             <!-- <div class="content">
+                 <div class="container-fluid">
+                     <div class="row">
+                         <div class="col-md-12">
+                             <div class="card">
+                                 <div class="card-header card-header-danger">
+                                     <h4 class="card-title ">Lista de Registros - Entrada</h4>
+                                 </div>
+                                 <div class="card-body">
+                                     <div class="table-responsive">
+                                         <table class="table">
+                                             <thead class="">
+                                                 <th>ID</th>
+                                                 <th>Área</th>
+                                                 <th class="text-center">Itens</th>
+                                                 <th>Data</th>
+                                                 <th>Observacao</th>
+                                                 <th class="text-center">Ações</th>
+                                             </thead>
+                                             <tbody id="listRegistrosEntrada">
+                                             </tbody>
+                                         </table>
+                                         <div class="copyright float-right">
+                                            <nav aria-label="Page navigation example text-right">
+                                                    <ul class="pagination">
+                                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                                    </ul>
+                                            </nav>
+                                        </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div> -->
              <footer class="footer">
                  <div class="container-fluid">
                      <!-- <nav class="float-left">
@@ -227,10 +268,13 @@
                      <div class="modal-body">
                         <table class="table">
                             <thead class="">
-                                <th>ID</th>
-                                <th>Registro</th>
-                                <th>Produto</th>
-                                <th>Quantidade da Saída</th>
+                                <!-- <th>ID</th> -->
+                                <!-- <th>Registro</th> -->
+                                <th>ID Produto</th>
+                                <th>Nome</th>
+                                <th id="thSaida" style="display:none">QTD de Saída</th>
+                                <th id="thEntrada" style="display:none">QTD de Entrada</th>
+                                <th>Ações</th>
                             </thead>
                             <tbody id="listItensRegistros">
                             </tbody>

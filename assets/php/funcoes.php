@@ -262,24 +262,26 @@
 
         }
 
-        function salvarRegistro($tabelaBaixa, $do_setor, $ao_setor, $solicitante, $solicitado, $data, $observacao, $arrayCod, $arrayQuantidade){
+        function salvarRegistroSaida($tabelaBaixa,$area, $do_setor, $ao_setor, $solicitante, $solicitado, $data, $observacao, $arrayCod, $arrayQuantidade){
 
 
             $tabelaId = "registros";
+            $tipoReg = "Saida";
       
             $lastPass = $this -> validaBaixaNoItem($tabelaBaixa, $arrayCod, $arrayQuantidade);
 
             if($lastPass){
 
-                $arrayData = array(':do_setor' => $do_setor,
-                                ':ao_setor' => $ao_setor,
-                                ':solicitante' => $solicitante,
-                                ':solicitado' => $solicitado,
-                                ':data_reg' => $data,
-                                ':observacao' => $observacao);
+                $arrayData = array(':area' => $area,
+                                   ':do_setor' => $do_setor,
+                                   ':ao_setor' => $ao_setor,
+                                   ':solicitante' => $solicitante,
+                                   ':solicitado' => $solicitado,
+                                   ':data_reg' => $data,
+                                   ':observacao' => $observacao);
 
-                $sqlInsert = $this -> pdo -> prepare("INSERT INTO registros (do_setor, ao_setor, func_solicitante, func_solicitado, data_reg, observacao) 
-                                                    VALUES (:do_setor, :ao_setor, :solicitante, :solicitado, :data_reg, :observacao)");
+                $sqlInsert = $this -> pdo -> prepare("INSERT INTO registros (area, do_setor, ao_setor, func_solicitante, func_solicitado, data_reg, observacao) 
+                                                    VALUES (:area, :do_setor, :ao_setor, :solicitante, :solicitado, :data_reg, :observacao)");
 
                 $sqlInsert -> execute ($arrayData);
 
@@ -295,14 +297,23 @@
 
                 for($i = 0; $i < $dataLenght ; $i++){
 
+
+                    $selectNome = $this -> pdo -> query ("SELECT nome FROM $tabelaBaixa WHERE id = $arrayCod[$i]");
+                    $resultSqlNome = $selectNome->fetch(PDO::FETCH_ASSOC);
+
+                    $nomeItem = $resultSqlNome['nome'];
+
+
                     
-                    $arrayData = array(':id_Reg' =>  $idReg,
-                                        ':cod' => $arrayCod[$i],
-                                        ':qnt' => $arrayQuantidade[$i]);
+                    $arrayData = array(':tipo' => $tipoReg,
+                                       ':id_Reg' => $idReg,
+                                       ':cod' => $arrayCod[$i],
+                                       ':nome' => $nomeItem,
+                                       ':qnt' => $arrayQuantidade[$i]);
 
                     // var_dump($arrayData);
-                    $sqlInsert = $this -> pdo -> prepare("INSERT INTO registros_itens (id_registro, produto, quantidade) 
-                                                            VALUES (:id_Reg, :cod, :qnt)");
+                    $sqlInsert = $this -> pdo -> prepare("INSERT INTO registros_itens (tipo, id_registro, produto, nome, quantidade) 
+                                                            VALUES (:tipo, :id_Reg, :cod, :nome, :qnt)");
 
                     $sqlInsert -> execute ($arrayData);                   
 
@@ -324,10 +335,129 @@
 
             }
 
-            echo "Sucesso";
+            echo "Sucesso Saida";
 
             }else{
-                echo "Erro";
+                echo "Erro Saida";
+            }
+
+        }
+
+        function entradaNoItem($tabelaEntrada, $idItem, $quantEntrada){
+
+            $sqlSelectItem = $this -> pdo -> query("SELECT nome FROM $tabelaEntrada WHERE id = '{$idItem}'");
+            $row = $sqlSelectItem -> rowCount();
+
+
+            if($row > 0){
+                return true;   
+
+            }else{
+                return false;
+
+            }
+
+
+        }
+        function validaEntradaNoItem($tabelaEntrada, $arrayCod, $arrayQuantidade){
+
+            $dataLenght = sizeof($arrayCod);
+            $condition = null;
+
+            for($i = 0; $i < $dataLenght ; $i++){
+
+                $lastPass = $this -> entradaNoItem($tabelaEntrada, $intCod = (int)$arrayCod[$i], $intQnt = (int)$arrayQuantidade[$i]);
+
+                if($lastPass){
+                  
+                    $condition = true;
+                    
+
+                }else{
+
+                    $condition = false;
+                    break;
+
+                }
+
+            }
+            return $condition;
+
+        }
+
+        function salvarRegistroEntrada($tabelaEntrada,$area, $data, $observacao, $arrayCod, $arrayQuantidade){
+
+
+            $tabelaId = "registros";
+            $tipoReg = "Entrada";
+      
+            $lastPass = $this -> validaEntradaNoItem($tabelaEntrada, $arrayCod, $arrayQuantidade);
+
+            if($lastPass){
+
+                $arrayData = array(':area' => $area,
+                                   ':data_reg' => $data,
+                                   ':observacao' => $observacao);
+
+                $sqlInsert = $this -> pdo -> prepare("INSERT INTO registros (area, data_reg, observacao) 
+                                                    VALUES (:area, :data_reg, :observacao)");
+
+                $sqlInsert -> execute ($arrayData);
+
+
+                $dataLenght = sizeof($arrayCod);
+                $idReg = (int)$this -> getLastId($tabelaId);
+
+                // var_dump($idReg);
+
+                // echo (sizeof($arrayCod));
+                // var_dump($arrayCod, $arrayQuantidade);
+
+
+                for($i = 0; $i < $dataLenght ; $i++){
+
+
+                    $selectNome = $this -> pdo -> query ("SELECT nome FROM $tabelaEntrada WHERE id = $arrayCod[$i]");
+                    $resultSqlNome = $selectNome->fetch(PDO::FETCH_ASSOC);
+
+                    $nomeItem = $resultSqlNome['nome'];
+
+
+                    
+                    $arrayData = array(':tipo' =>  $tipoReg,
+                                       ':id_Reg' =>  $idReg,
+                                       ':cod' => $arrayCod[$i],
+                                       ':nome' => $nomeItem,
+                                       ':qnt' => $arrayQuantidade[$i]);
+
+                    // var_dump($arrayData);
+                    $sqlInsert = $this -> pdo -> prepare("INSERT INTO registros_itens (tipo, id_registro, produto, nome, quantidade) 
+                                                            VALUES (:tipo, :id_Reg, :cod, :nome, :qnt)");
+
+                    $sqlInsert -> execute ($arrayData);                   
+
+                    // echo "<br>";
+                    // var_dump($sqlInsert);      
+                    
+
+                    $sqlSelectQnt = $this -> pdo -> query("SELECT quantidade FROM $tabelaEntrada WHERE id =  $arrayCod[$i]");
+                    $resultSql = $sqlSelectQnt->fetch(PDO::FETCH_ASSOC);
+
+                    $qntI = (int)$resultSql['quantidade'];
+
+
+                    $newQnt = $qntI + $arrayQuantidade[$i];
+                    $sqlUpdateQntItens = $this -> pdo -> query ("UPDATE $tabelaEntrada
+                                                                SET `quantidade` = '{$newQnt}'                                                     
+                                                                WHERE `id` = $arrayCod[$i]");
+                    
+
+            }
+
+            echo "Sucesso Entrada";
+
+            }else{
+                echo "Erro Entrada";
             }
 
         }

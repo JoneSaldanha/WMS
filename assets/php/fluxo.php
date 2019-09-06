@@ -96,7 +96,9 @@
         $idIndexDel = $_GET["id"];
         $u -> delIndexArmario($idIndexDel);
     }
-    else if($action == "salvarRegistro"){
+
+    
+    else if($action == "salvarRegistroSaida"){
         $area = $_POST["area"];
         $do_setor = $_POST["do_setor"];
         $ao_setor = $_POST["ao_setor"];
@@ -128,28 +130,67 @@
 
                 $tabela = "itens_armarios";
             }
-                $u -> salvarRegistro($tabela,
-                                     $do_setor, 
-                                     $ao_setor, 
-                                     $solicitante, 
-                                     $solicitado, 
-                                     $data, 
-                                     $observacao, 
-                                     $arrayCod, 
-                                     $arrayQuantidade);
+                $u -> salvarRegistroSaida($tabela,
+                                          $area,
+                                          $do_setor, 
+                                          $ao_setor, 
+                                          $solicitante, 
+                                          $solicitado, 
+                                          $data, 
+                                          $observacao, 
+                                          $arrayCod, 
+                                          $arrayQuantidade);
+            
+
+        }
+    }else if($action == "salvarRegistroEntrada"){
+
+        $area = $_POST["area"];
+        $data = $_POST["data"];
+        $observacao = $_POST["observacao"];
+
+        $arrayCod = $_POST["cod"];
+        $arrayQuantidade = $_POST["quantidade"];
+
+        function getDuplicates( $array ) {
+            return array_unique( array_diff_assoc( $array, array_unique( $array ) ) );
+        }
+        
+        $dupCod = sizeof(getDuplicates($arrayCod));
+        
+        if($dupCod > 0){
+
+            echo "Valores Duplicados";
+
+        }else{
+
+            if($area == "Ruas"){
+
+                $tabela = "itens_ruas";
+
+            }else if($area == "Armarios"){
+
+                $tabela = "itens_armarios";
+            }
+                $u -> salvarRegistroEntrada($tabela,
+                                            $area,
+                                            $data, 
+                                            $observacao, 
+                                            $arrayCod, 
+                                            $arrayQuantidade);
             
 
         }
 
 
-        
+    
+
+    
+
+    // $u -> salvarRegistro();
+
 
         
-
-        // $u -> salvarRegistro();
-
-
-            
     }
     else if($action == "listItensReg"){
 

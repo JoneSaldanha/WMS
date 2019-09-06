@@ -164,6 +164,24 @@
                                  </div>
                              </a>
                          </div>
+                         <div class="col-lg-3 col-md-6 col-sm-6">
+                             <a data-toggle="modal" data-target="#cadEndModal">
+                                 <div class="card card-stats">
+                                     <div class="card-header card-header-primary card-header-icon">
+                                         <div class="card-icon">
+                                             <i class="material-icons">add</i>
+                                         </div>
+                                         <p class="card-category">Controle</p>
+                                         <h3 class="card-title">Endereços</h3>
+                                     </div>
+                                     <div class="card-footer">
+                                         <div class="stats">
+                                             <i class="material-icons">add</i>Cadastrar Endereços do Estoque
+                                         </div>
+                                     </div>
+                                 </div>
+                             </a>
+                         </div>
  
                          <div class="col-lg-3 col-md-6 col-sm-6">
                              <a data-toggle="modal" data-target="#saidaModal">
@@ -208,9 +226,9 @@
  
                          <div class="col-lg-3 col-md-6 col-sm-6">
                              <a href="estoque.php">
- 
+
                                  <div class="card card-stats">
-                                     <div class="card-header card-header-primary card-header-icon">
+                                     <div class="card-header card-header-danger card-header-icon">
                                          <div class="card-icon">
                                              <i class="material-icons">store</i>
                                          </div>
@@ -860,15 +878,34 @@
                                     </div>
                                  </form>
                              </div>
- 
-
                          </div>
                      </div>
                  </div>
              </div>
          </div>
      </div>
- 
+
+     <!-- Modal - Cadastro de Endereço -->
+     <div class="modal fade" id="cadEndModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
      <!-- Modal - Ordem de Saída -->
      <div class="modal fade in" id="saidaModal" tabindex="-1" role="dialog" aria-labelledby="saidaModal">
          <div class="modal-dialog  modal-lg" role="document">
@@ -919,7 +956,7 @@
                                  </div>
                              </div>
 
-                            <div id="cloneNode" class="row has-danger">
+                            <div id="cloneNodeSaida" class="row has-danger">
 
                                 <div id="cloneNodeCod" class="col-6">
                                     <label for="inputCP">Cod Produto</label>
@@ -937,7 +974,7 @@
                                         <div class="form-group ">
                                             <div class="input-group">
                                                 <span class="input-group-btn">
-                                                    <button id="addCloneNode" type="button" class="btn btn-fab btn-round btn-success" onclick="cloneNodeAddItem()">
+                                                    <button id="addCloneNodeSaida" type="button" class="btn btn-fab btn-round btn-success" onclick="cloneNodeAddItemSaida()">
                                                         <i class="material-icons">add</i>
                                                     </button>
                                                 </span>
@@ -951,7 +988,7 @@
                                         <div class="form-group ">
                                             <div class="input-group">
                                                 <span class="input-group-btn">
-                                                    <button id="butRemoveClone" style="display:none" type="button" class="btn btn-fab btn-round btn-danger">
+                                                    <button id="butRemoveCloneSaida" style="display:none" type="button" class="btn btn-fab btn-round btn-danger">
                                                         <i class="material-icons">remove</i>
                                                     </button>
                                                 </span>
@@ -964,7 +1001,7 @@
 
 
 
-                            <div id="cloneNodeTarget">
+                            <div id="cloneNodeTargetSaida">
 
                             </div>
 
@@ -1004,35 +1041,87 @@
                          </button>
                      </div>
                      <div class="modal-body">
-                         <form class="form" method="" action="">
- 
+                         <form id="ordEntrada" class="form" method="" action="">
+
                              <div class="row has-danger">
-                                 <div class="col">
-                                     <label for="inputCP">Cod Produto</label>
-                                     <input type="text" class="form-control" placeholder="" required="true">
-                                 </div>
-                                 <div class="col has-danger">
-                                     <label for="inputNM">Observação</label>
-                                     <input type="text" class="form-control" placeholder="" required="true">
-                                 </div>
+
+                                <div class="col">
+                                    <label class="label-control">Área</label>
+                                    <select id="area" class="form-control" name="area" required="true">
+                                        <option selected></option>
+                                        <option>Ruas</option>
+                                        <option>Armarios</option>
+
+                                    </select>
+                                </div>                                   
+                                          
                              </div>
+
+                            <div id="cloneNodeEntrada" class="row has-danger">
+
+                                <div id="cloneNodeCod" class="col-6">
+                                    <label for="inputCP">Cod Produto</label>
+                                    <input name="cod[]" type="text" class="form-control" placeholder="" required="true">
+                                </div>
+
+                                <div id="cloneNodeQuantidade" class="col has-danger">  
+                                    <label for="inputQT">Quantidade</label>
+                                    <input name="quantidade[]" type="number" class="form-control" placeholder="" required="true">                                             
+                                </div>
+
+
+                                <div id="divBut" class="row">
+                                    <div class="col-auto mr-auto">
+                                        <div class="form-group ">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button id="addCloneNodeRuas" type="button" class="btn btn-fab btn-round btn-success" onclick="cloneNodeAddItemEntrada()">
+                                                        <i class="material-icons">add</i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>                                           
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-between">
+                                    <div class="col-auto mr-auto">
+                                        <div class="form-group ">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button id="butRemoveCloneEntrada" style="display:none" type="button" class="btn btn-fab btn-round btn-danger">
+                                                        <i class="material-icons">remove</i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>                                           
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div id="cloneNodeTargetEntrada">
+
+                            </div>
+
                              <div class="row has-danger">
                                  <div class="col">
                                      <label for="inputDT">Data</label>
-                                     <input type="date" class="form-control" placeholder="" required="true">
+                                     <input name="data" id="dashDateSaida" type="date" class="form-control" placeholder="" required="true">
                                  </div>
                                  <div class="col has-danger">
-                                     <label for="inputQT">Quantidade</label>
-                                     <input type="number" class="form-control" placeholder="" required="true">
-                                 </div>
+                                     <label for="inputNM">Observação</label>
+                                     <input name="observacao" type="text" class="form-control" placeholder="" required="true">
+                                 </div>                
                              </div>
- 
+
+                             <div class="modal-footer justify-content-center">
+                                <button type="submit" class="btn btn-success">Executar</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                            </div>
                          </form>
-                     </div>
- 
-                     <div class="modal-footer justify-content-center">
-                         <button type="button" class="btn btn-success">Executar</button>
-                         <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
                      </div>
                  </div>
              </div>
@@ -1092,7 +1181,9 @@
             
 
 
-            setPreventFormDataRegistro()
+            setPreventFormDataRegistroSaida()
+            setPreventFormDataRegistroEntrada()
+
             setPreventFormDataItemRua()
             setPreventFormDataItemArmario()
 

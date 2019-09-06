@@ -29,13 +29,26 @@ function setPreventFormDataItemArmario(){
     }
 }
 
-function setPreventFormDataRegistro(){
-    caminhoSaveReg = "../assets/php/fluxo.php?action=salvarRegistro";
-    const formSaveReg =  document.querySelector("#ordSaida")
-    formSaveReg.onsubmit = function(e){
+function setPreventFormDataRegistroEntrada(){
+    caminhoSaveRegEntrada = "../assets/php/fluxo.php?action=salvarRegistroEntrada";
+    const formSaveRegEntrada =  document.querySelector("#ordEntrada")
+    formSaveRegEntrada.onsubmit = function(e){
 
         e.preventDefault();
-        setFormDataReg(formSaveReg, caminhoSaveReg);
+        setFormDataReg(formSaveRegEntrada, caminhoSaveRegEntrada);
+        console.log(caminhoSaveRegEntrada)
+
+           
+    }
+}
+function setPreventFormDataRegistroSaida(){
+    caminhoSaveRegSaida = "../assets/php/fluxo.php?action=salvarRegistroSaida";
+    const formSaveRegSaida =  document.querySelector("#ordSaida")
+    formSaveRegSaida.onsubmit = function(e){
+
+        e.preventDefault();
+        setFormDataReg(formSaveRegSaida, caminhoSaveRegSaida);
+        console.log(caminhoSaveRegSaida)
            
     }
 }
@@ -89,8 +102,8 @@ function setFormDataReg(formSaveReg, caminhoSaveReg){
     }).then(response => response.text())
         .then(text => {
             console.log(text);
-            if( text == 'Sucesso') {
-                console.log("Sucesso")
+            if( text == 'Sucesso Saida') {
+                console.log("Sucesso Saida")
                 Swal.fire({
                     
                     position: 'center',
@@ -103,6 +116,20 @@ function setFormDataReg(formSaveReg, caminhoSaveReg){
                     formSaveReg.reset()
 
 
+            }else if(text == 'Sucesso Entrada'){
+
+                console.log("Sucesso Entrada")
+                Swal.fire({
+                    
+                    position: 'center',
+                    type: 'success',
+                    title: 'Entrada de Itens Conluida',
+                    showConfirmButton: false,
+                    timer: 2000
+                    })
+
+                    formSaveReg.reset()
+
             }else if(text == 'Valores Duplicados'){
 
                 console.log("Erro")
@@ -113,8 +140,8 @@ function setFormDataReg(formSaveReg, caminhoSaveReg){
                     text: 'Existem itens duplicados',
                     })
 
-            }else{
-                console.log("Erro")
+            }else if(text == 'Erro Saida'){
+                console.log("Erro Saida")
 
                 Swal.fire({
                     type: 'error',
@@ -122,28 +149,58 @@ function setFormDataReg(formSaveReg, caminhoSaveReg){
                     text: 'Não foi possivel realizar a autorização',
                     })
 
+            }else if(text == 'Erro Entrada'){
+                console.log("Erro Entrada")
+
+                Swal.fire({
+                    type: 'error',
+                    title: 'Erro!',
+                    text: 'Não foi possivel realizar a entrada dos itens',
+                    })
+
             } 
         })
 }
 
-function cloneNodeAddItem() {
+function cloneNodeAddItemSaida() {
 
     // $('#addCloneNode').click(function() {
 
 
-    var $cloneNode = $('#cloneNode').clone();
+    var $cloneNode = $('#cloneNodeSaida').clone();
     var _elm = $cloneNode.clone();
     _elm.find("input").val("");
-    _elm.find('#butRemoveClone').show();
-    _elm.find('#butRemoveClone').addClass("butRemoveClone");
+    _elm.find('#butRemoveCloneSaida').show();
+    _elm.find('#butRemoveCloneSaida').addClass("butRemoveCloneSaida");
 
-    $('#cloneNodeTarget').append(_elm);
+    $('#cloneNodeTargetSaida').append(_elm);
 
     // });
 
-    $(document).on("click", ".butRemoveClone", function(e) {
+    $(document).on("click", ".butRemoveCloneSaida", function(e) {
         var $e = $(e.currentTarget);
-        $e.closest('#cloneNode').remove();
+        $e.closest('#cloneNodeSaida').remove();
+    
+    });
+}
+function cloneNodeAddItemEntrada() {
+
+    // $('#addCloneNode').click(function() {
+
+
+    var $cloneNode = $('#cloneNodeEntrada').clone();
+    var _elm = $cloneNode.clone();
+    _elm.find("input").val("");
+    _elm.find('#butRemoveCloneEntrada').show();
+    _elm.find('#butRemoveCloneEntrada').addClass("butRemoveCloneEntrada");
+
+    $('#cloneNodeTargetEntrada').append(_elm);
+
+    // });
+
+    $(document).on("click", ".butRemoveCloneEntrada", function(e) {
+        var $e = $(e.currentTarget);
+        $e.closest('#cloneNodeEntrada').remove();
     
     });
 }

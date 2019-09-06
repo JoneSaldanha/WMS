@@ -1,66 +1,33 @@
-<?php
-    
-    
-    require_once 'conexao.php';  
-
-    $u = new Connect();
-    $pdo = $u -> Con();
-
-
-
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <select id="options" onchange="optionCheck()">
 
 
+    <option value="show">Mostra Div</option>
+    <option value="goto">Vai para o Google</option>
 
-    $arrayC = array(0 => 1,
-                    1 => 11);
-    $arrayQ = array(0 => 100,
-                    1 => 100);
+    </select>
 
-    $lastPass;
-    $dataLenght = sizeof($arrayC);
-
-    for($i = 0; $i < $dataLenght ; $i++){
-
-            
-        
-        $sqlSelectItem = $pdo -> query("SELECT quantidade FROM itens_ruas WHERE id = '{$arrayC[$i]}'");
-        $resultSql = $sqlSelectItem->fetch(PDO::FETCH_ASSOC);
-
-        var_dump($arrayC[$i]);
-        echo "</br>";
-        var_dump($arrayQ[$i]);
-        echo "</br>";
-        var_dump($resultSql);
-        echo "</br>";
-
-
-        $qntI = (int)$resultSql['quantidade'];
-
-        if($qntI < $arrayQ[$i]){
-            $lastPass = true;
-            break;
-
-        }else{
-            $lastPass = false;
-
+    <div id="hiddenDiv" style="height:100px;width:300px;border:1px;visibility:hidden;">
+    Eu estou visível agora!
+    </div>
+</body>
+    <script type="text/javascript">
+        function optionCheck(){
+            var option = document.getElementById("options").value;
+            if(option == "show"){
+                document.getElementById("hiddenDiv").style.visibility ="visible";
+            }
+            if(option == "goto"){
+                window.location = "http://google.com";
+            }
         }
-        
-
-    }
-    if($lastPass == true){
-                    
-        echo "Erro";
-        return false;
-
-    }else{
-        echo "Sucess";
-        return true;
-
-    }
-    
-
-
-
-?>
+    </script>
+</html>
