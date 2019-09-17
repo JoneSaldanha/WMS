@@ -29,6 +29,7 @@
         <!--     Fonts and icons     -->
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/editDataTables.css">
         <!-- CSS Files -->
         <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
         <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -66,6 +67,12 @@
                             <a class="nav-link" href="./registros.php">
                                 <i class="material-icons">content_paste</i>
                                 <p>Registros</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./enderecos.php">
+                                <i class="material-icons">import_export</i>
+                                <p>Endereços</p>
                             </a>
                         </li>
                     </ul>
@@ -131,7 +138,7 @@
                                         <!-- <a class="dropdown-item" href="#">Profile</a>
                                             <a class="dropdown-item" href="#">Settings</a>
                                             <div class="dropdown-divider"></div> -->
-                                        <a class="dropdown-item" href="#">Log out</a>
+                                        <a class="dropdown-item" href="../assets/php/fluxo.php?action=sectionDestroy">Log out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -145,29 +152,26 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header card-header-danger">
-                                        <h4 class="card-title ">Lista de Itens - Ruas</h4>
+                                        <h4 class="card-title "> Lista de Itens </h4>
                                         <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table class="table">
+                                            <table id="tabelaItens" class="table has-danger display" style="width:100%">
                                                 <thead class=" text-default">
-                                                    <th>ID</th>
-                                                    <th>COD</th>
-                                                    <th>Nome</th>
-                                                    <th>Rua</th>
-                                                    <th>Lado</th>
-                                                    <th>Prateleira</th>
-                                                    <th>Andar</th>
-                                                    <th>Quantidade</th>
-                                                    <th>Observação</th>
+                                                    <th class="text-center">Código</th>
+                                                    <th class="text-center">Endereço</th>
+                                                    <th class="text-center">Nome</th>
+                                                    <th class="text-center">Referência</th>
+                                                    <th class="text-center">Quantidade</th>
+                                                    <th class="text-center">Observação</th>
                                                     <th class="text-center">Ações</th>
 
                                                 </thead>
-                                                <tbody id="listItensRuas">
+                                                <tbody id="listItens">
                                                 </tbody>
                                             </table>
-                                            <div class="copyright float-right">
+                                            <!-- <div class="copyright float-right">
                                                 <nav aria-label="Page navigation example text-right ">
                                                     <ul class="pagination">
                                                         <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -177,7 +181,7 @@
                                                         <li class="page-item"><a class="page-link" href="#">Next</a></li>
                                                     </ul>
                                                 </nav>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -189,58 +193,7 @@
                 <!------------------------------------------------- Fim da Listagem de Itens em Ruas------------------------------------------------------------------>
                 <!---------------------------------------------------------------------------------------------------------------------------------------------------->
 
-                <!---------------------------------------------------------------------------------------------------------------------------------------------------->
-                <!------------------------------------------------- Listagem de Itens em Armarios -------------------------------------------------------------------->
-                <!---------------------------------------------------------------------------------------------------------------------------------------------------->
-
-                <div class="content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header card-header-danger">
-                                        <h4 class="card-title ">Lista de Itens - Armarios</h4>
-                                        <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead class=" text-default">
-                                                    <th>ID</th>
-                                                    <th>COD</th>
-                                                    <th>Nome</th>
-                                                    <th>Armario</th>
-                                                    <th>Andar</th>
-                                                    <th>Quantidade</th>
-                                                    <th>Observação</th>
-                                                    <th class="text-center">Ações</th>
-
-                                                </thead>
-                                                <tbody id="listItensArmarios">
-                                                </tbody>
-                                            </table>
-                                            <div class="copyright float-right">
-                                                <nav aria-label="Page navigation example text-right ">
-                                                    <ul class="pagination">
-                                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                                    </ul>
-                                                </nav>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!---------------------------------------------------------------------------------------------------------------------------------------------------->
-                <!------------------------------------------------- Fim da Listagem de Itens em Armarios -------------------------------------------------------------------->
-                <!---------------------------------------------------------------------------------------------------------------------------------------------------->
-
+               
                 <footer class="footer">
                     <div class="container-fluid">
                         <!-- <nav class="float-left">
@@ -285,123 +238,265 @@
         <!--------------------------------------------------------------------- Ruas ------------------------------------------------------------------------->
         <!---------------------------------------------------------------------------------------------------------------------------------------------------->
 
-        <!-- Modal - Ordem de Saída - Ruas -->
+        <!-- Modal - Ordem de Saída -->
         <div class="modal fade in" id="saidaModal" tabindex="-1" role="dialog" aria-labelledby="saidaModal">
             <div class="modal-dialog  modal-lg" role="document">
                 <div class="modal-content">
                     <div class="card card-signup card-plain">
-                        <div class="modal-header">
+                        <!-- <div class="modal-header">
                             <h3 class="modal-title text-center" id="myModalLabel"> Controle de Saida </h3>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                 <i aria-hidden="true" class="material-icons">clear</i>
                             </button>
-                        </div>
+                        </div> -->
                         <div class="modal-body">
-                            <form class="form" method="" action="">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col align-self-end">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            <i aria-hidden="true" class="material-icons">clear</i>
+                                        </button>                  
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="modal-title" id=""> Saída de Itens  </h3>
+                            <div class="card card-body">
+                                <form id="ordSaida" class="form" method="" action="">
 
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label for="inputOS">Ordem de Solicitação</label>
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputOP">Ordem de Permissão</label>
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label for="inputCP">Cod Produto</label>
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputNM">Observação</label>
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label for="inputDT">Data</label>
-                                        <input type="date" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputQT">Quantidade</label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-                                </div>
+                                    <!-- <div class="row has-danger">
 
-                            </form>
+                                        <div class="col">
+                                            <label class="label-control">Área</label>
+                                            <select id="area" class="form-control" name="area" required="true">
+                                                <option selected></option>
+                                                <option>Ruas</option>
+                                                <option>Armarios</option>
+
+                                            </select>
+                                        </div>                                   
+                                                
+                                    </div> -->
+
+                                    <div class="row has-danger">
+                                        <div class="col">
+                                            <label for="inputOS">Do Setor</label>
+                                            <input name="do_setor" type="text" class="form-control" placeholder="" required="true">
+                                        </div>
+                                        <div class="col has-danger">
+                                            <label for="inputOP">Ao Setor</label>
+                                            <input name="ao_setor" type="text" class="form-control" placeholder="" required="true">                                                                                                  
+                                        </div>
+                                    </div>
+
+                                    <div class="row has-danger">
+                                        <div class="col">
+                                            <label for="inputOS">Funcionario - Solicitante</label>
+                                            <input name="solicitante" type="text" class="form-control" placeholder="" required="true">
+                                        </div>
+                                        <div class="col has-danger">
+                                            <label for="inputOP">Funcionario - Solicitado</label>
+                                            <input name="solicitado" type="text" class="form-control" placeholder="" required="true">                                                                                                  
+                                        </div>
+                                    </div>
+
+                                    <div id="cloneNodeSaida" class="row has-danger">
+
+                                        <div id="cloneNodeCod" class="col-6">
+                                            <label for="inputCP">Cod Produto</label>
+                                            <input id="cod" name="cod[]" type="text" class="form-control" placeholder="" required="true" readonly> 
+                                        </div>
+
+                                        <div id="cloneNodeQuantidade" class="col has-danger">  
+                                            <label for="inputQT">Quantidade</label>
+                                            <input name="quantidade[]" type="number" class="form-control" placeholder="" required="true">                                             
+                                        </div>
+
+
+                                        <!-- <div id="divBut" class="row">
+                                            <div class="col-auto mr-auto">
+                                                <div class="form-group ">
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button id="addCloneNodeSaida" type="button" class="btn btn-fab btn-round btn-success" onclick="cloneNodeAddItemSaida()">
+                                                                <i class="material-icons">add</i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>                                           
+                                            </div>
+                                        </div>
+
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto mr-auto">
+                                                <div class="form-group ">
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button id="butRemoveCloneSaida" style="display:none" type="button" class="btn btn-fab btn-round btn-danger">
+                                                                <i class="material-icons">remove</i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>                                           
+                                            </div>
+                                        </div> -->
+
+                                    </div>
+
+
+
+                                    <div id="cloneNodeTargetSaida">
+
+                                    </div>
+
+                                    <div class="row has-danger">
+                                        <div class="col">
+                                            <label for="inputDT">Data</label>
+                                            <input name="data" id="dashDateSaida" type="date" class="form-control" placeholder="" required="true">
+                                        </div>
+                                        <div class="col has-danger">
+                                            <label for="inputNM">Observação</label>
+                                            <input name="observacao" type="text" class="form-control" placeholder="" required="true">
+                                        </div>                
+                                    </div>
+
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="submit" class="btn btn-success">Executar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                                    </div>
+
+                                </form>
+                            </div>
                         </div>
 
-                        <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-success">Executar</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Modal - Entrada de Produtos - Ruas -->
+        <!-- Modal - Ordem de Entrada -->
         <div class="modal fade in" id="entradaModal" tabindex="-1" role="dialog" aria-labelledby="entradaModal">
             <div class="modal-dialog  modal-lg" role="document">
                 <div class="modal-content">
                     <div class="card card-signup card-plain">
-                        <div class="modal-header">
+                        <!-- <div class="modal-header">
                             <h3 class="modal-title text-center" id="myModalLabel"> Controle de Entrada </h3>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                 <i aria-hidden="true" class="material-icons">clear</i>
                             </button>
-                        </div>
+                        </div> -->
                         <div class="modal-body">
-                            <form class="form" method="" action="">
-
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label for="inputCP">Cod Produto</label>
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputNM">Observação</label>
-                                        <input type="text" class="form-control" placeholder="">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col align-self-end">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            <i aria-hidden="true" class="material-icons">clear</i>
+                                        </button>                  
                                     </div>
                                 </div>
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label for="inputDT">Data</label>
-                                        <input type="date" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputQT">Quantidade</label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-                                </div>
+                            </div>
+                            <h3 class="modal-title" id=""> Entrada de Itens </h3>
+                            <div class="card card-body">
+                                <form id="ordEntrada" class="form" method="" action="">
 
-                            </form>
-                        </div>
+                                    <!-- <div class="row has-danger">
 
-                        <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-success">Executar</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                                        <div class="col">
+                                            <label class="label-control">Área</label>
+                                            <select id="area" class="form-control" name="area" required="true">
+                                                <option selected></option>
+                                                <option>Ruas</option>
+                                                <option>Armarios</option>
+
+                                            </select>
+                                        </div>                                   
+                                                
+                                    </div> -->
+
+                                    <div id="cloneNodeEntrada" class="row has-danger">
+
+                                        <div id="cloneNodeCod" class="col-6">
+                                            <label for="inputCP">Cod Produto</label>
+                                            <input id="cod" name="cod[]" type="text" class="form-control" placeholder="" required="true" readonly>
+                                        </div>
+
+                                        <div id="cloneNodeQuantidade" class="col has-danger">  
+                                            <label for="inputQT">Quantidade</label>
+                                            <input name="quantidade[]" type="number" class="form-control" placeholder="" required="true">                                             
+                                        </div>
+
+
+                                        <!-- <div id="divBut" class="row">
+                                            <div class="col-auto mr-auto">
+                                                <div class="form-group ">
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button id="addCloneNodeRuas" type="button" class="btn btn-fab btn-round btn-success" onclick="cloneNodeAddItemEntrada()">
+                                                                <i class="material-icons">add</i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>                                           
+                                            </div>
+                                        </div> -->
+
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto mr-auto">
+                                                <div class="form-group ">
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button id="butRemoveCloneEntrada" style="display:none" type="button" class="btn btn-fab btn-round btn-danger">
+                                                                <i class="material-icons">remove</i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>                                           
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <div id="cloneNodeTargetEntrada">
+
+                                    </div>
+
+                                    <div class="row has-danger">
+                                        <div class="col">
+                                            <label for="inputDT">Data</label>
+                                            <input name="data" id="dashDateSaida" type="date" class="form-control" placeholder="" required="true">
+                                        </div>
+                                        <div class="col has-danger">
+                                            <label for="inputNM">Observação</label>
+                                            <input name="observacao" type="text" class="form-control" placeholder="" required="true">
+                                        </div>                
+                                    </div>
+
+                                    <div class="modal-footer justify-content-center" style="border-top:20px">
+                                        <button type="submit" class="btn btn-success">Executar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Modal - Edição de Produtos - Ruas -->
-        <div class="modal fade in" id="editModalRua" tabindex="-1" role="dialog" aria-labelledby="editModalRua" enctype="multipart/form-data">
+        <!-- Modal - Edição de Itens  -->
+        <div class="modal fade in" id="editModalItens" tabindex="-1" role="dialog" aria-labelledby="editModalRua" enctype="multipart/form-data">
             <div class="modal-dialog  modal-lg" role="document">
                 <div class="modal-content">
                     <div class="card card-signup card-plain">
                         <div class="modal-header">
-                            <h3 class="modal-title text-center" id=""> Editar Produto </h3>
+                            <h3 class="modal-title text-center" id=""> Editar Itens </h3>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                 <i aria-hidden="true" class="material-icons">clear</i>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form id="formAltIndexRua" class="form" method="" action="">
+                            <form id="formAltItem" class="form" method="" action="">
 
                                 <div class="row has-danger">
                                     <!-- <div class="col-lg-6">
@@ -423,69 +518,26 @@
                                         <!-- readonly -->
                                     </div>
                                     <div class="col">
-                                        <label for="inputID">COD</label>
-                                        <input class="form-control" name="codPro" id="codPro" placeholder="" required="true" readonly>
+                                        <label for="inputID">COD - END</label>
+
+                                        <input list="dlEnd" class="form-control" name="endItem" id="codEnd" placeholder="" required="true" >
+                                        
+                                        <datalist id="dlEnd">
+                                        </datalist> 
                                     </div>
                                 </div>
 
                                 <div class="row has-danger">
                                     <div class="col">
                                         <label for="inputNM">Nome</label>
-                                        <input type="" class="form-control" name="editNome" id="editNome" placeholder="" required="true">
+                                        <input type="" class="form-control" name="editNome" id="editNome" placeholder="" required="true" readonly>
                                     </div>
                                     <div class="col has-danger">
                                         <label for="inputQT">Quantidade</label>
-                                        <input type="" class="form-control" name="editQuantidade" id="editQuantidade" placeholder="" required="true" disabled>
+                                        <input type="" class="form-control" name="editQuantidade" id="editQuantidade" placeholder="" required="true" readonly>
                                     </div>
                                 </div>
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label class="label-control">Numero da Rua</label>
-                                        <select type="" class="form-control" name="editRua" id="editRua" required="true">
-
-                                            <option type="" value="1">1</option>
-                                            <option type="" value="2">2</option>
-                                            <option type="" value="3">3</option>
-                                            <option type="" value="4">4</option>
-
-                                        </select>
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputLD">Lado</label>
-                                        <select type="" class="form-control" name="editLado" id="editLado" required="true">
-
-                                            <option type="" value="A">A</option>
-                                            <option type="" value="B" selected>B</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label class="label-control">Prateleira</label>
-                                        <select type="" class="form-control" name="editPrateleira" id="editArmario" required="true">
-
-                                            <option type="" value="1">1</option>
-                                            <option type="" value="2">2</option>
-                                            <option type="" value="3">3</option>
-                                            <option type="" value="4">4</option>
-                                            <option type="" value="5">5</option>
-
-                                        </select>
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputAD">Andar</label>
-                                        <select type="" class="select form-control" name="editAndar" id="editAndar" required="true">
-
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                        </select>
-                                    </div>
-                                </div>
+                               
                                 <div class="row has-danger">
                                     <div class="col">
                                         <label for="inputOBS">Observação</label>
@@ -506,223 +558,8 @@
             </div>
         </div>
         </body>
-        <!---------------------------------------------------------------------------------------------------------------------------------------------------->
-        <!------------------------------------------------- Modais das Ordens de Saida, Entrada e Edição ----------------------------------------------------->
-        <!---------------------------------------------------------------- Ruas ------------------------------------------------------------------------------>
-        <!---------------------------------------------------------------------------------------------------------------------------------------------------->
-
-
-
-
-        <!---------------------------------------------------------------------------------------------------------------------------------------------------->
-        <!------------------------------------------------- Modais das Ordens de Saida, Entrada e Edição ----------------------------------------------------->
-        <!--------------------------------------------------------------------- Armarios --------------------------------------------------------------------->
-        <!---------------------------------------------------------------------------------------------------------------------------------------------------->
-
-        <!-- Modal - Ordem de Saída - Armarios -->
-        <div class="modal fade in" id="saidaModalArmarios" tabindex="-1" role="dialog" aria-labelledby="saidaModal">
-            <div class="modal-dialog  modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="card card-signup card-plain">
-                        <div class="modal-header">
-                            <h3 class="modal-title text-center" id="myModalLabel"> Controle de Saida </h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                <i aria-hidden="true" class="material-icons">clear</i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="form" method="" action="">
-
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label for="inputOS">Ordem de Solicitação</label>
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputOP">Ordem de Permissão</label>
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label for="inputCP">Cod Produto</label>
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputNM">Observação</label>
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label for="inputDT">Data</label>
-                                        <input type="date" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputQT">Quantidade</label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-
-                        <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-success">Executar</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal - Entrada de Produtos - Armarios -->
-        <div class="modal fade in" id="entradaModal" tabindex="-1" role="dialog" aria-labelledby="entradaModal">
-            <div class="modal-dialog  modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="card card-signup card-plain">
-                        <div class="modal-header">
-                            <h3 class="modal-title text-center" id="myModalLabel"> Controle de Entrada </h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                <i aria-hidden="true" class="material-icons">clear</i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="form" method="" action="">
-
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label for="inputCP">Cod Produto</label>
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputNM">Observação</label>
-                                        <input type="text" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label for="inputDT">Data</label>
-                                        <input type="date" class="form-control" placeholder="">
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputQT">Quantidade</label>
-                                        <input type="number" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-
-                        <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-success">Executar</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal - Edição de Produtos - Armarios -->
-        <div class="modal fade in" id="editModalArmarios" tabindex="-1" role="dialog" aria-labelledby="editModalArmarios" enctype="multipart/form-data">
-            <div class="modal-dialog  modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="card card-signup card-plain">
-                        <div class="modal-header">
-                            <h3 class="modal-title text-center" id=""> Editar Produto </h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                <i aria-hidden="true" class="material-icons">clear</i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="formAltIndexArmario" class="form" method="" action="">
-
-                                <div class="row has-danger">
-                                    <!-- <div class="col-lg-6">
-
-                                    <label for="inputState">State</label>
-                                    <select id="inputState" class="form-control">
-
-                                                    <option selected>...</option>
-                                                    <option selected disabled>Rua</option>
-                                                    <option>Armario</option>
-
-                                                </select>
-                                    <input type="text" class="form-control" placeholder="" value="Ruas" disabled>
-
-                                </div> -->
-                                    <div class="col">
-                                        <label for="inputID">ID</label>
-                                        <input type="" class="form-control" name="idPro" id="idPro" placeholder="" required="true" readonly>
-                                        <!-- readonly -->
-                                    </div>
-                                    <div class="col">
-                                        <label for="inputID">COD</label>
-                                        <input class="form-control" name="codPro" id="codPro" placeholder="" required="true" readonly>
-                                    </div>
-                                </div>
-
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label for="inputNM">Nome</label>
-                                        <input type="" class="form-control" name="editNome" id="editNome" placeholder="" required="true">
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputQT">Quantidade</label>
-                                        <input type="" class="form-control" name="editQuantidade" id="editQuantidade" placeholder="" required="true" disabled>
-                                    </div>
-                                </div>
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label class="label-control">Armario</label>
-                                        <select type="" class="form-control" name="editArmario" id="editArmario" required="true">
-
-                                            <option type="" value="1">1</option>
-                                            <option type="" value="2">2</option>
-                                            <option type="" value="3">3</option>
-                                            <option type="" value="4">4</option>
-                                            <option type="" value="5">5</option>
-
-                                        </select>
-                                    </div>
-                                    <div class="col has-danger">
-                                        <label for="inputAD">Andar</label>
-                                        <select type="" class="select form-control" name="editAndar" id="editAndar" required="true">
-
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row has-danger">
-                                    <div class="col">
-                                        <label for="inputOBS">Observação</label>
-                                        <input type="" class="form-control" name="editObservacao" id="editObservacao" placeholder="" required="true">
-                                    </div>
-                                </div>
-                                <div class="modal-footer justify-content-center">
-
-                                    <button type="submit" class="btn btn-success">Executar</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </body>
-        <!---------------------------------------------------------------------------------------------------------------------------------------------------->
-        <!------------------------------------------------- Modais das Ordens de Saida, Entrada e Edição ----------------------------------------------------->
-        <!---------------------------------------------------------------- Armarios--------------------------------------------------------------------------->
-        <!---------------------------------------------------------------------------------------------------------------------------------------------------->
-        
+        <!-- Scripts DASHBOARD -->
+        <script src="../assets/js/dashboard.js"></script>
         <!-- Scripts ESTOQUE -->
         <script src="../assets/js/estoque.js"></script>
         <!--   Core JS Files   -->
@@ -771,14 +608,17 @@
 
         <script>
             $(document).ready(function() {
-                carregarListaItensRuas()
-                carregarListaItensArmarios()
+                carregarListaItens()
+                povoaModalDeEdicao()
+                povoaModalDeSaida()
+                povoaModalDeEntrada()
+                setPreventFormDataAltItem()
 
-                povoaModalDeEdicaoRuas()
-                povoaModalDeEdicaoArmarios()
+                setPreventFormDataRegistroSaida()
+                setPreventFormDataRegistroEntrada()
 
-                altIndexItemRua()
-                altIndexItemRuaArmarios()
+                povoaSelectCodEnd()
+
 
             })
         </script>

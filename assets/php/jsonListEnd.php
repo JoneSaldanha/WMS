@@ -5,8 +5,9 @@
 	$pdo = $u -> Con();
 
  
-	$sqlSelectAll = $pdo -> query ("SELECT * FROM itens_armarios");
+	$sqlSelectAll = $pdo -> query ("SELECT * FROM enderecos");
 	$allRegisters = $sqlSelectAll -> fetchAll(PDO::FETCH_ASSOC);
+
 	
 	echo json_encode($allRegisters);
 

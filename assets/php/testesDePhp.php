@@ -1,33 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <select id="options" onchange="optionCheck()">
+<?php 
+    
+    // require_once 'conexao.php';
+
+    // $u = new Connect();
+    // $pdo = $u -> Con();
+
+    // $endereco = 17;
+
+    // $checkVarItem = $pdo -> query ("SELECT quantidade FROM itens WHERE cod_end ='{$endereco}'");
+    // $allRegisters = $checkVarItem->fetchAll(PDO::FETCH_ASSOC);
+
+    // $sqlLimiteEnd = $pdo -> query ("SELECT limite_itens FROM enderecos WHERE id ='{$endereco}'");
+    // $valuLimiteEnd = $sqlLimiteEnd -> fetch();
+
+    // // $valuLimiteEnd = (int)$valuLimiteEnd;
+    // // echo($valuLimiteEnd["limite_itens"]);
+    // // var_dump($valuLimiteEnd[0]["limite_itens"]);
+    // // var_dump($valuLimiteEnd["limite_itens"]);
+    // $valuLimite = (int)$valuLimiteEnd["limite_itens"];
+
+    // var_dump($valuLimite);
 
 
-    <option value="show">Mostra Div</option>
-    <option value="goto">Vai para o Google</option>
+    // $limiteItens = 0;
 
-    </select>
+    // foreach($allRegisters as $qntLimite){
+    //     $limiteItens += $qntLimite["quantidade"];
 
-    <div id="hiddenDiv" style="height:100px;width:300px;border:1px;visibility:hidden;">
-    Eu estou visível agora!
-    </div>
-</body>
-    <script type="text/javascript">
-        function optionCheck(){
-            var option = document.getElementById("options").value;
-            if(option == "show"){
-                document.getElementById("hiddenDiv").style.visibility ="visible";
-            }
-            if(option == "goto"){
-                window.location = "http://google.com";
-            }
-        }
-    </script>
-</html>
+    // }
+
+    // var_dump($limiteItens);
+
+    // require("funcoes.php");
+
+    // $u = new Functions();
+    // // $action = $_GET['action'];
+    // $intF = 17;
+    // $intS = 0;
+    // $u -> validaQntCadastro($intS,$intF);
+    $endereco = 17;
+    $arrayCod = array($endereco);
+    var_dump($arrayCod);
+?>

@@ -30,6 +30,8 @@
      <!--     Fonts and icons     -->
      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+     <link rel="stylesheet" type="text/css" href="../assets/css/editDataTables.css">
+
      <!-- CSS Files -->
      <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
      <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -69,6 +71,12 @@
                              <p>Registros</p>
                          </a>
                      </li>
+                     <li class="nav-item ">
+                        <a class="nav-link" href="./enderecos.php">
+                            <i class="material-icons">import_export</i>
+                            <p>Endereços</p>
+                        </a>
+                    </li>
                  </ul>
              </div>
          </div>
@@ -146,15 +154,15 @@
                          <div class="col-md-12">
                              <div class="card">
                                  <div class="card-header card-header-danger">
-                                     <h4 class="card-title ">Lista de Registros</h4>
+                                     <h4 class="card-title ">Lista de Registros - Saida</h4>
                                      <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                                  </div>
                                  <div class="card-body">
                                      <div class="table-responsive">
-                                         <table class="table">
+                                         <table id="listaRegistrosSaida" class="table">
                                              <thead class="">
                                                  <th>ID</th>
-                                                 <th>Área</th>
+                                                 <th>Tipo</th>
                                                  <th>Do Setor</th>
                                                  <th>Ao Setor</th>
                                                  <th>Solicitante</th>
@@ -162,12 +170,12 @@
                                                  <th class="text-center">Itens</th>
                                                  <th>Data</th>
                                                  <th>Observacao</th>
-                                                 <th class="text-center">Ações</th>
+                                                 <!-- <th class="text-center">Ações</th> -->
                                              </thead>
                                              <tbody id="listRegistrosSaida">
                                              </tbody>
                                          </table>
-                                         <div class="copyright float-right">
+                                         <!-- <div class="copyright float-right">
                                             <nav aria-label="Page navigation example text-right">
                                                     <ul class="pagination">
                                                     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -177,7 +185,47 @@
                                                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                                                     </ul>
                                             </nav>
-                                        </div>
+                                        </div> -->
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="container-fluid">
+                     <div class="row">
+                         <div class="col-md-12">
+                             <div class="card">
+                                 <div class="card-header card-header-danger">
+                                     <h4 class="card-title ">Lista de Registros - Entrada</h4>
+                                     <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                                 </div>
+                                 <div class="card-body">
+                                     <div class="table-responsive">
+                                         <table class="table" id="listaRegistrosEntrada">
+                                             <thead class="">
+                                                 <th>ID</th>
+                                                 <th>Tipo</th>                                          
+                                                 <th class="text-center">Itens</th>
+                                                 <th>Data</th>
+                                                 <th>Observacao</th>
+                                                 <!-- <th class="text-center">Ações</th> -->
+                                             </thead>
+                                             <tbody id="listRegistrosEntrada">
+                                             </tbody>
+                                         </table>
+                                         <!-- <div class="copyright float-right">
+                                            <nav aria-label="Page navigation example text-right">
+                                                  
+                                            <ul class="pagination">
+                                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                                    </ul>
+                                            </nav>
+                                        </div> -->
                                      </div>
                                  </div>
                              </div>
@@ -274,7 +322,7 @@
                                 <th>Nome</th>
                                 <th id="thSaida" style="display:none">QTD de Saída</th>
                                 <th id="thEntrada" style="display:none">QTD de Entrada</th>
-                                <th>Ações</th>
+                                <!-- <th>Ações</th> -->
                             </thead>
                             <tbody id="listItensRegistros">
                             </tbody>

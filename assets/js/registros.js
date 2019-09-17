@@ -1,3 +1,9 @@
+function dataTablesRegistros(){
+    $(document).ready(function() {
+        $('#listaRegistrosSaida').DataTable();
+        $('#listaRegistrosEntrada').DataTable();
+    });
+}
 function carregarListaRegistros() {
     $('#listRegistros').empty(); //Limpando a tabela
     $.ajax({
@@ -9,9 +15,9 @@ function carregarListaRegistros() {
             for (var i = 0; dados.length > i; i++) {
                 console.log(dados[i].do_setor);
                 //Adicionando registros retornados na tabela
-                if(dados[i].do_setor != ""){
+                if(dados[i].tipo_reg == "Saida"){
                     $('#listRegistrosSaida').append('<tr>' + '<td>' + dados[i].id + '</td>' +
-                        '<td>' + dados[i].area + '</td>' +
+                        '<td>' + dados[i].tipo_reg + '</td>' +
                         '<td>' + dados[i].do_setor + '</td>' +
                         '<td>' + dados[i].ao_setor + '</td>' +
                         '<td>' + dados[i].func_solicitante + '</td>' +
@@ -28,45 +34,46 @@ function carregarListaRegistros() {
                         '<td>' + dados[i].data_reg + '</td>' +
                         '<td>' + dados[i].observacao + '</td>' +
 
-                        '<td class="td-actions text-center">' +
+                        // '<td class="td-actions text-center">' +
 
-                        '<button type="button" rel="tooltip" class="btn btn-primary" data-toggle="modal" data-target="#saidaModal">' +
-                        '<i class="material-icons">edit</i>' +
-                        '</button>' +
+                        // '<button type="button" rel="tooltip" class="btn btn-primary" data-toggle="modal" data-target="#saidaModal">' +
+                        // '<i class="material-icons">edit</i>' +
+                        // '</button>' +
 
-                        '</td>' +
-
-                        '</tr>');
-                        
-            }else if(dados[i].do_setor == ""){
-
-                $('#listRegistrosEntrada').append('<tr>' + '<td>' + dados[i].id + '</td>' +
-                        '<td>' + dados[i].area + '</td>' +
-                        
-                        '<td class="td-actions text-center">' +
-
-                        '<button type="button" rel="tooltip" class="btn btn-info" data-toggle="modal" data-target="#showItensReg" data-idreg =' + dados[i].id + " " + '>' +      
-                        '<i class="material-icons">remove_red_eye</i>' +
-                        '</button>' +
-
-                        '</td>' +
-
-                        '<td>' + dados[i].data_reg + '</td>' +
-                        '<td>' + dados[i].observacao + '</td>' +
-
-                        '<td class="td-actions text-center">' +
-
-                        '<button type="button" rel="tooltip" class="btn btn-primary" data-toggle="modal" data-target="#saidaModal">' +
-                        '<i class="material-icons">edit</i>' +
-                        '</button>' +
-
-                        '</td>' +
+                        // '</td>' +
 
                         '</tr>');
 
+                }else if(dados[i].tipo_reg == "Entrada"){
+                    $('#listRegistrosEntrada').append('<tr>' + '<td>' + dados[i].id + '</td>' +
+                    '<td>' + dados[i].tipo_reg + '</td>' +
+                    
+                    '<td class="td-actions text-center">' +
 
+                    '<button type="button" rel="tooltip" class="btn btn-info" data-toggle="modal" data-target="#showItensReg" data-idreg =' + dados[i].id + " " + '>' +      
+                    '<i class="material-icons">remove_red_eye</i>' +
+                    '</button>' +
+
+                    '</td>' +
+
+                    '<td>' + dados[i].data_reg + '</td>' +
+                    '<td>' + dados[i].observacao + '</td>' +
+
+                    // '<td class="td-actions text-center">' +
+
+                    // '<button type="button" rel="tooltip" class="btn btn-primary" data-toggle="modal" data-target="#saidaModal">' +
+                    // '<i class="material-icons">edit</i>' +
+                    // '</button>' +
+
+                    // '</td>' +
+
+                    '</tr>');
+
+                }
+           
             }
-            }
+
+            dataTablesRegistros()
         }
     });
 }
@@ -95,7 +102,7 @@ function showItensReg(){
                         $("#thEntrada").css("display", "none");
 
                         
-                    }else if(dados[i].tipo == "Entrada"){
+                    }else if(dados[i].tipo =="Entrada"){
 
                         $("#thEntrada").css("display", "");
                         $("#thSaida").css("display", "none");
@@ -108,13 +115,13 @@ function showItensReg(){
                     '<td>' + dados[i].nome + '</td>' +
                     '<td>' + dados[i].quantidade + '</td>' +
                     
-                    '<td class="td-actions">' +
+                    // '<td class="td-actions">' +
 
-                    '<button type="button" rel="tooltip" class="btn btn-primary" data-toggle="modal" data-target="#saidaModal">' +
-                    '<i class="material-icons">edit</i>' +
-                    '</button>' +
+                    // '<button type="button" rel="tooltip" class="btn btn-primary" data-toggle="modal" data-target="#saidaModal">' +
+                    // '<i class="material-icons">edit</i>' +
+                    // '</button>' +
 
-                    '</td>' +
+                    // '</td>' +
                     '</tr>'
                     
                     );
