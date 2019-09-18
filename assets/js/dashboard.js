@@ -88,7 +88,10 @@ function povoaSelectCodEnd() {
 function povoaSelectCodItens() {
     // $('#cadItemModal').on('show.bs.modal', function(event) {
 //     console.log("Sucesso 01")
-    // $('#dlCodItensSaida').empty();
+    $('#dlCodItensSaida').html('');
+    $('#dlCodItensEntrada').html('');
+
+
     // $('#dlCodItensSaida').append('<option>');
     // $('#selectCodItensEntrada').append('<option selected></option>');
     $.ajax({
@@ -302,6 +305,7 @@ function setFormDataReg(formSaveReg, caminhoSaveReg){
                     })
 
                     formSaveReg.reset()
+                    povoaSelectCodItens()
 
             }else if(text == 'Item não encontrado'){
 

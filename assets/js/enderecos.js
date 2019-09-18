@@ -36,14 +36,14 @@ function carregarListaEnd() {
                         '<td class="text-center">' + dados[i].observacao + '</td>' +
                         // '<td>' + dados[i].limite_itens + '</td>' +
 
-                        '<td class="td-actions text-center">' +
+                        // '<td class="td-actions text-center">' +
 
-                        '<button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#entradaModal" data-whateverid =' + dados[i].id + ">" + 
-                        '<i class="material-icons">edit</i>' +
-                        '</button>' +                  
+                        // '<button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#entradaModal" data-whateverid =' + dados[i].id + ">" + 
+                        // '<i class="material-icons">edit</i>' +
+                        // '</button>' +                  
 
 
-                        '</td>' +
+                        // '</td>' +
 
                         '</tr>');
                         
@@ -63,14 +63,14 @@ function carregarListaEnd() {
                     
 
 
-                    '<td class="td-actions text-center">' +
+                    // '<td class="td-actions text-center">' +
 
-                    '<button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#entradaModal" data-whateverid =' + dados[i].id + ">" + 
-                    '<i class="material-icons">edit</i>' +
-                    '</button>' +                  
+                    // '<button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#entradaModal" data-whateverid =' + dados[i].id + ">" + 
+                    // '<i class="material-icons">edit</i>' +
+                    // '</button>' +                  
 
 
-                    '</td>' +
+                    // '</td>' +
 
                     '</tr>');
 
@@ -84,14 +84,14 @@ function carregarListaEnd() {
                         '<td class="text-center">' + dados[i].observacao + '</td>' +
                         // '<td>' + dados[i].limite_itens + '</td>' +
 
-                        '<td class="td-actions text-center">' +
+                        // '<td class="td-actions text-center">' +
 
-                        '<button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#entradaModal" data-whateverid =' + dados[i].id + ">" + 
-                        '<i class="material-icons">edit</i>' +
-                        '</button>' +                  
+                        // '<button type="button" rel="tooltip" class="btn btn-success" data-toggle="modal" data-target="#entradaModal" data-whateverid =' + dados[i].id + ">" + 
+                        // '<i class="material-icons">edit</i>' +
+                        // '</button>' +                  
 
 
-                        '</td>' +
+                        // '</td>' +
 
                         '</tr>');
                         

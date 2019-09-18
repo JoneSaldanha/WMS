@@ -12,9 +12,17 @@
 =========================================================
 
  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
- <?php
- session_start();
+<?php 
+
+    session_start();
+
+    if(!isset($_SESSION['Status'])){
+        header('Location: ../');
+        exit();   
+    }
+    
 ?>
+
  <!DOCTYPE html>
  <html lang="en">
  
@@ -169,7 +177,7 @@
                                                  <th class="text-center">Andar</th>                                               
                                                  <th class="text-center">Observaçao</th>
                                                  <!-- <th>Limite</th> -->
-                                                 <th class="text-center">Ações</th>
+                                                 <!-- <th class="text-center">Ações</th> -->
                                              </thead>
                                              <tbody id="listEnderecosRuas">
                                              </tbody>
@@ -212,7 +220,7 @@
                                                  <th class="text-center">Observação</th>
 
                                                  <!-- <th>Limite</th> -->
-                                                 <th class="text-center">Ações</th>
+                                                 <!-- <th class="text-center">Ações</th> -->
                                              </thead>
                                              <tbody id="listEnderecosArmarios">
                                              </tbody>
@@ -252,7 +260,7 @@
                                                  <th class="text-center">Andar</th>
                                                  <th class="text-center">Container</th>
                                                  <th class="text-center">Observaçao</th>
-                                                 <th class="text-center">Ações</th>
+                                                 <!-- <th class="text-center">Ações</th> -->
                                              </thead>
                                              <tbody id="listEnderecosGaveteiros">
                                              </tbody>

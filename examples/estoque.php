@@ -1,17 +1,11 @@
-<?php
+<?php 
     session_start();
 
-    require_once ("../assets/php/funcoes.php");
-
-    $u = new Functions();
-
-	// if (!isset($_SESSION["logado"]) || $_SESSION["logado"] != TRUE) {
-	//     header("Location: Login.php");
-	// }
-	// else {
-	//     echo "<center><h1>Seja bem-vindo usuario de id: ".$_SESSION["id"]."</h1></center>";
-  // }
-
+    if(!isset($_SESSION['Status'])){
+        header('Location: ../');
+	    exit();   
+    }
+       
 ?>
 
     <!DOCTYPE html>

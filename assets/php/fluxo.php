@@ -19,10 +19,10 @@
     if ($action == "cadItem"){
 
         // $endereco = $_POST["endItem"];
-        $nome = $_POST["nomeItem"];
+        $nome = strtoupper($_POST["nomeItem"]);
         $referencia = $_POST["refItem"];
         // $quantidade = $_POST["qntItem"];
-        $observacao = $_POST["obsItem"];
+        $observacao = strtoupper($_POST["obsItem"]);
 
         $u -> cadItem($nome,  
                       $referencia,                               
@@ -38,9 +38,9 @@
     }else if($action == "altItem"){
 
         $id = $_POST["idPro"];
-        $altNome = $_POST["editNome"];
+        $altNome = strtoupper($_POST["editNome"]);
         $codEnd = $_POST["endItem"];
-        $altObs = $_POST["editObservacao"];
+        $altObs = strtoupper($_POST["editObservacao"]);
 
         $u -> altItem($id, 
                       $altNome, 
@@ -51,7 +51,7 @@
         // var_dump($_POST);
 
         $identificador = $_POST["inputType"];   
-        $observacao = $_POST["endObs"];
+        $observacao = strtoupper($_POST["endObs"]);
         // $limite_itens = $_POST["endQntMx"];   
 
         $rua = "";
@@ -131,12 +131,12 @@
     
     else if($action == "salvarRegistroSaida"){
 
-        $do_setor = $_POST["do_setor"];
-        $ao_setor = $_POST["ao_setor"];
-        $solicitante = $_POST["solicitante"];
-        $solicitado = $_POST["solicitado"];
-        $data = $_POST["data"];
-        $observacao = $_POST["observacao"];
+        $do_setor = strtoupper($_POST["do_setor"]);
+        $ao_setor = strtoupper($_POST["ao_setor"]);
+        $solicitante = strtoupper($_POST["solicitante"]);
+        $solicitado = strtoupper($_POST["solicitado"]);
+        $data = strtoupper($_POST["data"]);
+        $observacao = strtoupper($_POST["observacao"]);
 
         $arrayCod = $_POST["cod"];
         $arrayQuantidade = $_POST["quantidade"];
@@ -167,7 +167,7 @@
     else if($action == "salvarRegistroEntrada"){
 
         $data = $_POST["data"];
-        $observacao = $_POST["observacao"];
+        $observacao = strtoupper($_POST["observacao"]);
 
         $arrayCod = $_POST["cod"];
         $arrayQuantidade = $_POST["quantidade"];

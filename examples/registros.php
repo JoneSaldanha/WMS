@@ -12,9 +12,17 @@
 =========================================================
 
  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-<?php
- session_start();
+<?php 
+
+    session_start();
+
+    if(!isset($_SESSION['Status'])){
+        header('Location: ../');
+        exit();   
+    }
+   
 ?>
+
  <!DOCTYPE html>
  <html lang="en">
  
@@ -140,7 +148,7 @@
                                      <!-- <a class="dropdown-item" href="#">Profile</a>
                     <a class="dropdown-item" href="#">Settings</a>
                     <div class="dropdown-divider"></div> -->
-                                     <a class="dropdown-item" href="#">Log out</a>
+                                     <a class="dropdown-item" href="../assets/php/fluxo.php?action=sectionDestroy">Log out</a>
                                  </div>
                              </li>
                          </ul>
